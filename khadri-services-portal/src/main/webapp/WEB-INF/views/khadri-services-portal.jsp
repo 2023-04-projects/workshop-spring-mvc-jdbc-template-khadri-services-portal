@@ -45,6 +45,14 @@
             document.getElementById("search-student-by-marks-section").style.display = "block";
         }
 
+        function addCustomer() {
+        	hideAllForms();
+            document.getElementById("add-customer-form-section").style.display = "block";
+        }
+        function searchCustomerByID() {
+        	hideAllForms();
+            document.getElementById("search-customer-by-id-section").style.display = "block";
+        }
         function hideAllForms() {
             const sections = [
                 "add-student-form-section",
@@ -58,8 +66,10 @@
                 "search-student-by-name-result-section",
                 "search-student-by-course-result-section",
                 "search-student-by-marks-result-section",
-                "add-student-form-result-section"
-            ];
+                "add-student-form-result-section",
+                "add-customer-form-section"
+
+                  ];
             sections.forEach(id => {
                 const el = document.getElementById(id);
                 if (el) el.style.display = "none";
@@ -69,7 +79,7 @@
 </head>
 <body>
 
-	<header> Khadri Student Portal </header>
+	<header> Khadri Service Portal </header>
 
 	<div class="container">
 		<div class="left-pane">
@@ -82,6 +92,15 @@
 				<a href="javascript:void(0);" onclick="searchStudentByName()"> Search Student By Name</a>
 				<a href="javascript:void(0);" onclick="searchStudentByCourse()"> Search Student By Course</a>
 				<a href="javascript:void(0);" onclick="searchStudentByMarks()"> Search Student By Marks</a>
+				
+				<a href="javascript:void(0);" onclick="addCustomer()"> Add Customer</a> 
+				<a href="javascript:void(0);" onclick="updateCustomer()"> Update Customer</a>
+				<a href="javascript:void(0);" onclick="deleteCustomer()"> Delete Customer</a>
+				<a href="javascript:void(0);" onclick="searchCustomerByID()"> Search Customer By ID</a>
+				<a href="javascript:void(0);" onclick="searchCustomerByName()"> Search Customer By Name</a>
+				<a href="javascript:void(0);" onclick="searchCustomerByCourse()"> Search Customer By Course</a>
+				<a href="javascript:void(0);" onclick="searchCustomerByMarks()"> Search Customer By Marks</a>
+				
 			</div>
 		</div>
 
@@ -302,6 +321,15 @@
 			</c:if>
 
 		</div>
+		<div id="search-customer-by-id-section" class="form-container"
+				style="display: none;">
+				<h3>Search Customer By Id</h3>
+				<form action="${pageContext.request.contextPath}/find/by/id"
+					method="get">
+					<label for="id">Enter Customer Id:</label> <input type="text"
+						id="id" name="id" required /> <input type="submit" value="Search" />
+				</form>
+			</div>
 	</div>
 
 </body>

@@ -88,6 +88,11 @@
 			<artifactId>student-backend-app</artifactId>
 			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
+		<dependency>
+			<groupId>com.khadri.spring.mvc</groupId>
+			<artifactId>customer-backend-app</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 
 	<build>
