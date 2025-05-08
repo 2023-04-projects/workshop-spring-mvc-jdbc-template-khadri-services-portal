@@ -16,7 +16,7 @@ import com.khadri.spring.student.form.StudentForm;
 import com.khadri.spring.student.service.StudentService;
 
 @Controller
-@RequestMapping("/student")
+@RequestMapping("/")
 public class StudentController {
 
 	private StudentService studentService;
