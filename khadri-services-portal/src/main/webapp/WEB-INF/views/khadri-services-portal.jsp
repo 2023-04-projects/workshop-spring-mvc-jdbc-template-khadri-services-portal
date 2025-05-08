@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Khadri Services Portal</title>
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/student-portal.css" />
+	href="${pageContext.request.contextPath}/resources/khadri-service-portal.css" />
 
 <script> 
         function addStudent() {
@@ -136,19 +136,18 @@
 				<a href="javascript:void(0);" onclick="deleteCustomer()"> Delete Customer</a>
 				<a href="javascript:void(0);" onclick="searchCustomerByID()"> Search Customer By ID</a>
 				<a href="javascript:void(0);" onclick="searchCustomerByName()"> Search Customer By Name</a>
-				<a href="javascript:void(0);" onclick="searchCustomerByCourse()"> Search Customer By Course</a>
-				<a href="javascript:void(0);" onclick="searchCustomerByMarks()"> Search Customer By Marks</a>
+				<a href="javascript:void(0);" onclick="searchCustomerByAddress()"> Search Customer By Address</a>
+				<a href="javascript:void(0);" onclick="searchCustomerByPhoneumber()"> Search Customer By PhoneNumber</a>
 				
 			</div>
 		</div>
-
-		<div class="right-pane">
+<div class="right-pane">
 			<h2>Forms</h2>
 
 			<div id="search-student-by-id-section" class="form-container"
 				style="display: none;">
 				<h3>Search Student By Id</h3>
-				<form action="${pageContext.request.contextPath}/find/by/id"
+				<form action="${pageContext.request.contextPath}/student/find/by/id"
 					method="get">
 					<label for="id">Enter Student Id:</label> <input type="text"
 						id="id" name="id" required /> <input type="submit" value="Search" />
@@ -212,7 +211,7 @@
 			<div id="search-student-by-course-section" class="form-container"
 				style="display: none;">
 				<h3>Search Student By Course</h3>
-				<form action="${pageContext.request.contextPath}/find/by/course"
+				<form action="${pageContext.request.contextPath}/student/find/by/course"
 					method="get">
 					<label for="course">Enter Course Name:</label> <input type="text"
 						id="course" name="course" required /> <input type="submit"
@@ -359,143 +358,30 @@
 			</c:if>
 
 		</div>
-		<div class="right-pane">
-    <h2>Customer Forms</h2>
-
-    <!-- Search by ID -->
-    <div id="search-customer-by-id-section" class="form-container" style="display: none;">
-        <h3>Search Customer By Id</h3>
-        <form action="${pageContext.request.contextPath}/customer/find/by/id" method="get">
-            <label for="id">Enter Customer Id:</label>
-            <input type="text" id="id" name="id" required />
-            <input type="submit" value="Search" />
-        </form>
-    </div>
-
-    <c:if test="${not empty foundCustomer}">
-        <div id="search-customer-by-id-result-section" class="grid-section">
-            <h3>Customer Found</h3>
-            <table border="1" cellpadding="10" cellspacing="0">
-                <tr><th>ID</th><th>Name</th><th>address</th><th>phoneNumber</th></tr>
-                <tr>
-                    <td>${foundCustomer.id}</td>
-                    <td>${foundCustomer.name}</td>
-                    <td>${foundCustomer.address}</td>
-                    <td>${foundCustomer.phoneNumber}</td>
-                </tr>
-            </table>
-        </div>
-    </c:if>
-
-    <!-- Search by Name -->
-    <div id="search-customer-by-name-section" class="form-container" style="display: none;">
-        <h3>Search Customer By Name</h3>
-        <form action="${pageContext.request.contextPath}/customer/find/by/name" method="get">
-            <label for="name">Enter Customer Name:</label>
-            <input type="text" id="name" name="name" required />
-            <input type="submit" value="Search" />
-        </form>
-    </div>
-
-    <c:if test="${not empty customersByName}">
-        <div id="search-customer-by-name-result-section" class="grid-section">
-            <h3>Matching Customers</h3>
-            <table border="1" cellpadding="10" cellspacing="0">
-                <tr><th>ID</th><th>Name</th><th>address</th><th>phoneNumber</th></tr>
-                <c:forEach var="customer" items="${customersByName}">
-                    <tr>
-                        <td>${customer.id}</td>
-                        <td>${customer.name}</td>
-                        <td>${customer.address}</td>
-                        <td>${customer.phoneNumber}</td>
-                    </tr>
-                </c:forEach>
-            </table>
-        </div>
-    </c:if>
-
-    <!-- Search by City -->
-    <div id="search-customer-by-address-section" class="form-container" style="display: none;">
-        <h3>Search Customer By Address</h3>
-        <form action="${pageContext.request.contextPath}/customer/find/by/address" method="get">
-            <label for="city">Enter Address:</label>
-            <input type="text" id="address" name="address" required />
-            <input type="submit" value="Search" />
-        </form>
-    </div>
-
-    <c:if test="${not empty customersByCity}">
-        <div id="search-customer-by-address-result-section" class="grid-section">
-            <h3>Matching Customers (By Address)</h3>
-            <table border="1" cellpadding="10" cellspacing="0">
-                <tr><th>ID</th><th>Name</th><th>Address</th><th>PhoneNumber</th></tr>
-                <c:forEach var="customer" items="${customersByAddress}">
-                    <tr>
-                        <td>${customer.id}</td>
-                        <td>${customer.name}</td>
-                        <td>${customer.address}</td>
-                        <td>${customer.phoneNumber}</td>
-                    </tr>
-                </c:forEach>
-            </table>
-        </div>
-    </c:if>
-
-    <!-- Add Customer -->
-    <div id="add-customer-form-section" class="form-container">
-        <h3>Add Customer</h3>
-        <form:form modelAttribute="customerForm" method="post" action="${pageContext.request.contextPath}/customer/save">
-            <form:label path="id">ID:</form:label>
-            <form:input path="id" readonly="true" /><br /><br />
-            <form:label path="name">Name:</form:label>
-            <form:input path="name" required="true" /><br /><br />
-            <form:label path="address">Address:</form:label>
-            <form:input path="address" required="true" /><br /><br />
-            <form:label path="phoneNumber">phoneNumber:</form:label>
-            <form:input path="phoneNumber" type="phoneNumber" required="true" /><br /><br />
-            <input type="submit" value="Submit" />
-        </form:form>
-    </div>
-
-    <c:if test="${not empty addedCustomer}">
-        <div id="add-customer-form-result-section" class="added-record">
-            <h3>Customer Added Successfully!</h3>
-            <p><strong>ID:</strong> ${addedCustomer.id}</p>
-            <p><strong>Name:</strong> ${addedCustomer.name}</p>
-            <p><strong>Address:</strong> ${addedCustomer.address}</p>
-            <p><strong>PhoneNumber:</strong> ${addedCustomer.phoneNumber}</p>
-        </div>
-    </c:if>
-
-    <!-- Update Customer -->
-    <div id="update-customer-form-section" class="form-container" style="display: none;">
-        <h3>Update Customer</h3>
-        <form:form modelAttribute="customerForm" method="post" action="${pageContext.request.contextPath}/customer/update">
-            <form:label path="id">ID:</form:label>
-            <form:input path="id" required="true" /><br /><br />
-            <form:label path="name">Name:</form:label>
-            <form:input path="name" required="true" /><br /><br />
-            <form:label path="address">Address:</form:label>
-            <form:input path="address" required="true" /><br /><br />
-            <form:label path="phoneNumber">PhoneNumber:</form:label>
-            <form:input path="phoneNumber" type="phoneNumber" required="true" /><br /><br />
-            <input type="submit" value="Update" />
-        </form:form>
-    </div>
-
-    <!-- Delete Customer -->
-    <div id="delete-customer-form-section" class="form-container" style="display: none;">
-        <h3>Delete Customer</h3>
-        <form action="${pageContext.request.contextPath}/customer/delete" method="post">
-            <label for="deleteCustomerId">Enter Customer ID to Delete:</label>
-            <input type="text" id="deleteCustomerId" name="id" required />
-            <input type="submit" value="Delete" />
-        </form>
-    </div>
-</div>
-		
-		
 	</div>
-
+		
+<div id="add-customer-form-section" class="form-container">
+				<h3>Add Customer</h3>
+				<form:form modelAttribute="customerForm" method="post"
+					action="${pageContext.request.contextPath}/customer/save">
+					<form:label path="id">ID:</form:label>
+					<form:input path="id" readonly="true" />
+					<br />
+					<br />
+					<form:label path="name">Name:</form:label>
+					<form:input path="name" required="true" />
+					<br />
+					<br />
+					<form:label path="address">Address:</form:label>
+					<form:input path="address" required="true" />
+					<br />
+					<br />
+					<form:label path="phoneNumber">PhoneNumber:</form:label>
+					<form:input path="phoneNumber" type="long" required="true" />
+					<br />
+					<br />
+					<input type="submit" value="Submit" />
+				</form:form>
+			</div>
 </body>
 </html>
