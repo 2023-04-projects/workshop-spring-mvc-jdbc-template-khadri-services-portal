@@ -11,16 +11,17 @@ import com.khadri.spring.customer.form.CustomerForm;
 @Service
 public class CustomerService {
 
-    private CustomerDao custDao;
+	private CustomerDao custDao;
 
-    @Autowired
-    public CustomerService(CustomerDao custDao) {
-        this.custDao = custDao;
-    }
+	@Autowired
+	public CustomerService(CustomerDao custDao) {
+		this.custDao = custDao;
+	}
 
 	public CustomerForm save(CustomerForm customerForm) {
 		return custDao.save(customerForm);
 	}
+
 	public CustomerForm update(CustomerForm customerForm) {
 		return custDao.update(customerForm);
 	}
@@ -28,9 +29,11 @@ public class CustomerService {
 	public CustomerForm findById(int id) {
 		return custDao.findById(id);
 	}
+
 	public void delete(int id) {
 		custDao.delete(id);
 	}
+
 	public List<CustomerForm> findByName(String name) {
 		return custDao.findByName(name);
 	}
