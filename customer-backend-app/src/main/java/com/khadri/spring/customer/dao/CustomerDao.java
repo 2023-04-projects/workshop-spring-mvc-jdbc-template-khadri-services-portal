@@ -2,12 +2,8 @@ package com.khadri.spring.customer.dao;
 
 import java.sql.PreparedStatement;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
@@ -19,12 +15,12 @@ import com.khadri.spring.customer.form.CustomerForm;
 @Repository
 public class CustomerDao {
 
-    private JdbcTemplate jdbcTemplate;
+	private JdbcTemplate jdbcTemplate;
 
-    @Autowired
-    public CustomerDao(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-    }
+	@Autowired
+	public CustomerDao(JdbcTemplate jdbcTemplate) {
+		this.jdbcTemplate = jdbcTemplate;
+	}
 
 //    public CustomerForm findById(int id) {
 //        return jdbcTemplate.queryForObject(CustomerQueries.FIND_BY_ID.getQuery(),
@@ -36,21 +32,21 @@ public class CustomerDao {
 //            new BeanPropertyRowMapper<>(CustomerForm.class), "%" + name + "%");
 //    }
 
-    public CustomerForm save(CustomerForm customer) {
-        KeyHolder keyHolder = new GeneratedKeyHolder();
+	public CustomerForm save(CustomerForm customer) {
+		KeyHolder keyHolder = new GeneratedKeyHolder();
 
-        jdbcTemplate.update(connection -> {
-            PreparedStatement ps = connection.prepareStatement(
-            		CustomerQueries.INSERT.getQuery(), Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, customer.getName());
-            ps.setString(2, customer.getAddress());
-            ps.setLong(3, customer.getPhoneNumber());
-            return ps;
-        }, keyHolder);
+		jdbcTemplate.update(connection -> {
+			PreparedStatement ps = connection.prepareStatement(CustomerQueries.INSERT.getQuery(),
+					Statement.RETURN_GENERATED_KEYS);
+			ps.setString(1, customer.getName());
+			ps.setString(2, customer.getAddress());
+			ps.setLong(3, customer.getPhoneNumber());
+			return ps;
+		}, keyHolder);
 
-        customer.setId(keyHolder.getKey().intValue());
-        return customer;
-    }
+		customer.setId(keyHolder.getKey().intValue());
+		return customer;
+	}
 
 //    public CustomerForm update(CustomerForm customer) {
 //        jdbcTemplate.update(connection -> {
