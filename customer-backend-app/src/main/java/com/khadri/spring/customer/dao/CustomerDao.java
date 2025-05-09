@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
@@ -28,15 +29,17 @@ public class CustomerDao {
 
 	public CustomerForm save(CustomerForm customer) {
 		KeyHolder keyHolder = new GeneratedKeyHolder();
-
-		jdbcTemplate.update(connection -> {
-			PreparedStatement ps = connection.prepareStatement(CustomerQueries.INSERT.getQuery(),
+		
+		PreparedStatementCreator creator = con ->{
+			PreparedStatement ps = con.prepareStatement(CustomerQueries.INSERT.getQuery(),
 					Statement.RETURN_GENERATED_KEYS);
 			ps.setString(1, customer.getName());
 			ps.setString(2, customer.getAddress());
 			ps.setLong(3, customer.getPhoneNumber());
 			return ps;
-		}, keyHolder);
+		};
+
+		jdbcTemplate.update(creator, keyHolder);
 
 		customer.setId(keyHolder.getKey().intValue());
 		return customer;

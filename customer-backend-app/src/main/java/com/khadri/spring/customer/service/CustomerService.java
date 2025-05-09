@@ -19,8 +19,7 @@ public class CustomerService {
     }
 
 	public CustomerForm save(CustomerForm customer) {
-		custDao.save(customer);
-		return null;
+		return custDao.save(customer);
 	}
 	public CustomerForm update(CustomerForm customerForm) {
 		return custDao.update(customerForm);

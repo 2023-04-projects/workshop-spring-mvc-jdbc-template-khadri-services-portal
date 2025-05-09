@@ -230,7 +230,7 @@
 
 		 <div id="add-customer-form-section" class="form-container">
 		    <h3>Add Customer</h3>
-		    <form:form modelAttribute="customerForm" method="post" action="${pageContext.request.contextPath}/save">
+		    <form:form modelAttribute="customerForm" method="post" action="${pageContext.request.contextPath}/customer/save">
 		        <form:label path="id">ID:</form:label>
 		        <form:input path="id" readonly="true" />
 		        <br /><br />
@@ -252,13 +252,13 @@
 		        <h3>Customer Added Successfully!</h3>
 		        <p><strong>ID:</strong> ${addedCustomer.id}</p>
 		        <p><strong>Name:</strong> ${addedCustomer.name}</p>
-		        <p><strong>Address:</strong> ${addedCustomer.Address}</p>
+		        <p><strong>Address:</strong> ${addedCustomer.address}</p>
 		        <p><strong>PhoneNumber:</strong> ${addedCustomer.phoneNumber}</p>
 		    </div>
 		</c:if>
 			 <div id="search-customer-by-id-section" class="form-container" style="display: none;">
 	            <h3>Search Customer By Id</h3>
-	            <form action="${pageContext.request.contextPath}/find/by/id" method="get">
+	            <form action="${pageContext.request.contextPath}/customer/find/by/id" method="get">
 	                <label for="id">Enter Customer Id:</label>
 	                <input type="text" id="id" name="id" required />
 	                <input type="submit" value="Search" />
@@ -311,7 +311,7 @@
         </div>
         <div id="search-customer-by-name-section" class="form-container" style="display: none;">
 		    <h3>Search Customer By Name</h3>
-		    <form action="${pageContext.request.contextPath}/find/by/name" method="get">
+		    <form action="${pageContext.request.contextPath}/customer/find/by/name" method="get">
 		        <label for="name">Enter Customer Name:</label>
 		        <input type="text" id="name" name="name" required />
 		        <input type="submit" value="Search" />
@@ -340,7 +340,7 @@
 		</c:if>
 		<div id="search-customer-by-address-section" class="form-container" style="display: none;">
 		    <h3>Search Customer By Address</h3>
-		    <form action="${pageContext.request.contextPath}/find/by/address" method="get">
+		    <form action="${pageContext.request.contextPath}/customer/find/by/address" method="get">
 		        <label for="course">Enter Address Name:</label>
 		        <input type="text" id="address" name="address" required />
 		        <input type="submit" value="Search" />
@@ -369,7 +369,7 @@
 		</c:if>
 		 <div id="search-customer-by-phone-number-section" class="form-container" style="display: none;">
 		    <h3>Search Customer By Phone Number</h3>
-		    <form action="${pageContext.request.contextPath}/find/by/phoneNumber" method="get">
+		    <form action="${pageContext.request.contextPath}/customer/find/by/phoneNumber" method="get">
 		        <label for="phoneNumber">Enter Phone Number:</label>
 		        <input type="number" id="phoneNumber" name="phoneNumber" required />
 		        <input type="submit" value="Search" />

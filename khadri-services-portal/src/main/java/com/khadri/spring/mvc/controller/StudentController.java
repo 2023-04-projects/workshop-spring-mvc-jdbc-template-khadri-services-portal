@@ -12,9 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.khadri.spring.student.service.StudentService;
-import com.khadri.spring.customer.form.CustomerForm;
 import com.khadri.spring.student.form.StudentForm;
+import com.khadri.spring.student.service.StudentService;
 
 @Controller
 @RequestMapping("/student")
@@ -25,14 +24,6 @@ public class StudentController {
 	@Autowired
 	public StudentController(StudentService studentService) {
 		this.studentService = studentService;
-	}
-
-	// Show main portal page with empty form model
-	@GetMapping("/")
-	public String showPortal(Model model) {
-		model.addAttribute("studentForm", new StudentForm());
-		model.addAttribute("customerForm", new CustomerForm());
-		return "khadri-services-portal"; // your JSP page name
 	}
 
 	// Save a new student

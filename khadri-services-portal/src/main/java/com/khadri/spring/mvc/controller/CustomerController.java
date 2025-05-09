@@ -14,6 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.khadri.spring.customer.form.CustomerForm;
 import com.khadri.spring.customer.service.CustomerService;
+import com.khadri.spring.student.form.StudentForm;
 
 @Controller
 @RequestMapping("/customer")
@@ -40,6 +41,7 @@ public class CustomerController {
 	public String updateCustomer(@ModelAttribute("customerForm") CustomerForm customerForm, Model model) {
 		customerService.update(customerForm);
 		model.addAttribute("customerForm", new CustomerForm()); // reset form
+		model.addAttribute("studentForm", new StudentForm()); // reset form
 		return "khadri-services-portal";
 	}
 	@PostMapping("/delete")
