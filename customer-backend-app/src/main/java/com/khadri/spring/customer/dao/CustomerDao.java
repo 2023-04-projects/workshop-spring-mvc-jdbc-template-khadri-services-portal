@@ -25,12 +25,10 @@ public class CustomerDao {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 
-
-
 	public CustomerForm save(CustomerForm customer) {
 		KeyHolder keyHolder = new GeneratedKeyHolder();
-		
-		PreparedStatementCreator creator = con ->{
+
+		PreparedStatementCreator creator = con -> {
 			PreparedStatement ps = con.prepareStatement(CustomerQueries.INSERT.getQuery(),
 					Statement.RETURN_GENERATED_KEYS);
 			ps.setString(1, customer.getName());
@@ -45,42 +43,43 @@ public class CustomerDao {
 		return customer;
 	}
 
-    public CustomerForm update(CustomerForm customerForm) {
-        jdbcTemplate.update(connection -> {
-            PreparedStatement ps = connection.prepareStatement(CustomerQueries.UPDATE.getQuery());
-            ps.setString(1, customerForm.getName());
-            ps.setString(2, customerForm.getAddress());
-            ps.setLong(3, customerForm.getPhoneNumber());
-            ps.setInt(4, customerForm.getId());
-            return ps;
-        });
-        return customerForm;
-    }
-    public CustomerForm findById(int id) {
+	public CustomerForm update(CustomerForm customerForm) {
+		jdbcTemplate.update(connection -> {
+			PreparedStatement ps = connection.prepareStatement(CustomerQueries.UPDATE.getQuery());
+			ps.setString(1, customerForm.getName());
+			ps.setString(2, customerForm.getAddress());
+			ps.setLong(3, customerForm.getPhoneNumber());
+			ps.setInt(4, customerForm.getId());
+			return ps;
+		});
+		return customerForm;
+	}
+
+	public CustomerForm findById(int id) {
 		System.out.println("CustomerDao : findById(-)");
 		return jdbcTemplate.queryForObject(CustomerQueries.FIND_BY_ID.getQuery(),
 				new BeanPropertyRowMapper<>(CustomerForm.class), id);
 	}
 
-    public List<CustomerForm> findByName(String name) {
+	public List<CustomerForm> findByName(String name) {
 		System.out.println("CustomerDao : findByName(-)");
-		return jdbcTemplate.query(CustomerQueries.FIND_BY_NAME.getQuery(), new BeanPropertyRowMapper<>(CustomerForm.class),
-				name);
+		return jdbcTemplate.query(CustomerQueries.FIND_BY_NAME.getQuery(),
+				new BeanPropertyRowMapper<>(CustomerForm.class), name);
 	}
 
 	public List<CustomerForm> findByAddress(String address) {
 		System.out.println("CustomerDao : findByAddress(-)");
-		return jdbcTemplate.query(CustomerQueries.FIND_BY_ADDRESS.getQuery(), new BeanPropertyRowMapper<>(CustomerForm.class),
-				address);
+		return jdbcTemplate.query(CustomerQueries.FIND_BY_ADDRESS.getQuery(),
+				new BeanPropertyRowMapper<>(CustomerForm.class), address);
 	}
 
 	public List<CustomerForm> findByPhoneNumber(long phoneNumber) {
 		System.out.println("CustomerDao : findByPhoneNumber(-)");
-		return jdbcTemplate.query(CustomerQueries.FIND_BY_PHONENUMBER.getQuery(), new BeanPropertyRowMapper<>(CustomerForm.class),
-				phoneNumber);
+		return jdbcTemplate.query(CustomerQueries.FIND_BY_PHONENUMBER.getQuery(),
+				new BeanPropertyRowMapper<>(CustomerForm.class), phoneNumber);
 	}
-	
-    public void delete(int id) {
+
+	public void delete(int id) {
 		System.out.println("CustomerDao : delete(-)");
 		jdbcTemplate.update(CustomerQueries.DELETE.getQuery(), id);
 	}
