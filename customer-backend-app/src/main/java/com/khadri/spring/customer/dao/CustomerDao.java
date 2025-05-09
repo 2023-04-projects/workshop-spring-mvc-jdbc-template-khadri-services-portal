@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.Statement;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
@@ -22,15 +23,7 @@ public class CustomerDao {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 
-//    public CustomerForm findById(int id) {
-//        return jdbcTemplate.queryForObject(CustomerQueries.FIND_BY_ID.getQuery(),
-//            new BeanPropertyRowMapper<>(CustomerForm.class), id);
-//    }
-//
-//    public List<CustomerForm> findByName(String name) {
-//        return jdbcTemplate.query(CustomerQueries.FIND_BY_NAME.getQuery(),
-//            new BeanPropertyRowMapper<>(CustomerForm.class), "%" + name + "%");
-//    }
+
 
 	public CustomerForm save(CustomerForm customer) {
 		KeyHolder keyHolder = new GeneratedKeyHolder();
@@ -48,37 +41,21 @@ public class CustomerDao {
 		return customer;
 	}
 
-//    public CustomerForm update(CustomerForm customer) {
-//        jdbcTemplate.update(connection -> {
-//            PreparedStatement ps = connection.prepareStatement(CustomerQueries.UPDATE.getQuery());
-//            ps.setString(1, customer.getName());
-//            ps.setString(2, customer.getAddress());
-//            ps.setLong(3, customer.getPhoneNumber());
-//            ps.setInt(4, customer.getId());
-//            return ps;
-//        });
-//        return customer;
-//    }
-//
-//    public CustomerForm partialUpdate(int id, Map<String, Object> updates) {
-//        StringBuilder sql = new StringBuilder("UPDATE customers SET ");
-//        List<Object> values = new ArrayList<>();
-//
-//        updates.forEach((key, value) -> {
-//            sql.append(key).append("=?, ");
-//            values.add(value);
-//        });
-//
-//        sql.setLength(sql.length() - 2); // remove trailing comma
-//        sql.append(" WHERE id=?");
-//        values.add(id);
-//
-//        jdbcTemplate.update(sql.toString(), values.toArray());
-//
-//        return findById(id);
-//    }
-//
-//    public void delete(int id) {
-//        jdbcTemplate.update(CustomerQueries.DELETE.getQuery(), id);
-//    }
+    public CustomerForm update(CustomerForm customerForm) {
+        jdbcTemplate.update(connection -> {
+            PreparedStatement ps = connection.prepareStatement(CustomerQueries.UPDATE.getQuery());
+            ps.setString(1, customerForm.getName());
+            ps.setString(2, customerForm.getAddress());
+            ps.setLong(3, customerForm.getPhoneNumber());
+            ps.setInt(4, customerForm.getId());
+            return ps;
+        });
+        return customerForm;
+    }
+    public CustomerForm findById(int id) {
+		System.out.println("CustomerDao : findById(-)");
+		return jdbcTemplate.queryForObject(CustomerQueries.FIND_BY_ID.getQuery(),
+				new BeanPropertyRowMapper<>(CustomerForm.class), id);
+	}
+
 }

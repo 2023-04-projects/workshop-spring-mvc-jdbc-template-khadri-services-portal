@@ -246,9 +246,19 @@
 		        <input type="submit" value="Submit" />
 		    </form:form>
 			</div>
+			
+			<c:if test="${not empty addedCustomer}">
+		    <div id="add-customer-form-result-section" class="added-record">
+		        <h3>Student Added Successfully!</h3>
+		        <p><strong>ID:</strong> ${addedStudent.id}</p>
+		        <p><strong>Name:</strong> ${addedStudent.name}</p>
+		        <p><strong>Address:</strong> ${addedStudent.course}</p>
+		        <p><strong>PhoneNumber:</strong> ${addedCustomer.phoneNumber}</p>
+		    </div>
+		</c:if>
 			 <div id="search-customer-by-id-section" class="form-container" style="display: none;">
 	            <h3>Search Customer By Id</h3>
-	            <form action="${pageContext.request.contextPath}/find/by/id" method="get">
+	            <form action="${pageContext.request.contextPath}/customer/find/by/id" method="get">
 	                <label for="id">Enter Customer Id:</label>
 	                <input type="text" id="id" name="id" required />
 	                <input type="submit" value="Search" />
@@ -257,7 +267,7 @@
 	        
 	        <div id="update-customer-form-section" class="form-container" style="display: none;">
 		    <h3>Update Customer</h3>
-		    <form:form modelAttribute="customerForm" method="post" action="${pageContext.request.contextPath}/update">
+		    <form:form modelAttribute="customerForm" method="post" action="${pageContext.request.contextPath}/customer/update">
 		        <form:label path="id">ID:</form:label>
 		        <form:input path="id" required="true"/>
 		        <br /><br />
@@ -275,7 +285,7 @@
 		</div>
 		 <div id="delete-customer-form-section" class="form-container" style="display: none;">
             <h3>Delete Customer</h3>
-            <form action="${pageContext.request.contextPath}/delete" method="post">
+            <form action="${pageContext.request.contextPath}/customer/delete" method="post">
                 <label for="deleteId">Enter Customer ID to Delete:</label>
                 <input type="text" id="deleteId" name="id" required />
                 <input type="submit" value="Delete" />
@@ -291,7 +301,7 @@
 		</div>
 		<div id="search-customer-by-address-section" class="form-container" style="display: none;">
 		    <h3>Search Customer By Address</h3>
-		    <form action="${pageContext.request.contextPath}/find/by/course" method="get">
+		    <form action="${pageContext.request.contextPath}/customer/find/by/address" method="get">
 		        <label for="course">Enter Address Name:</label>
 		        <input type="text" id="address" name="address" required />
 		        <input type="submit" value="Search" />
@@ -300,13 +310,32 @@
 		
 		 <div id="search-customer-by-phone-number-section" class="form-container" style="display: none;">
 		    <h3>Search Customer By Phone Number</h3>
-		    <form action="${pageContext.request.contextPath}/find/by/marks" method="get">
-		        <label for="marks">Enter Phone Number:</label>
+		    <form action="${pageContext.request.contextPath}/customer/find/by/phoneNumber" method="get">
+		        <label for="phoneNumber">Enter Phone Number:</label>
 		        <input type="number" id="phoneNumber" name="phoneNumber" required />
 		        <input type="submit" value="Search" />
 		    </form>
 		</div>
-
+		<c:if test="${not empty foundCustomer}">
+		    <div id="search-customer-by-id-result-section" class="grid-section" >
+		        <h3>Customer Found</h3>
+		        <table border="1" cellpadding="10" cellspacing="0">
+		            <tr>
+		                <th>ID</th>
+		                <th>Name</th>
+		                <th>Address</th>
+		                <th>PhoneNumber</th>
+		            </tr>
+		            <tr>
+		                <td>${foundStudent.id}</td>
+		                <td>${foundStudent.name}</td>
+		                <td>${foundStudent.address}</td>
+		                <td>${foundStudent.phoneNumber}</td>
+		            </tr>
+		        </table>
+		    </div>
+		</c:if>
+		
     </div>
 </div>
 

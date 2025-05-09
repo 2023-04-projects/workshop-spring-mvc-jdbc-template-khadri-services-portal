@@ -20,22 +20,18 @@ public class CustomerService {
 		custDao.save(customer);
 		return null;
 	}
-//
-//	public CustomerForm update(CustomerForm customer) {
-//		return customer;
-//		// TODO Auto-generated method stub
-//		
-//	}
+	public CustomerForm update(CustomerForm customerForm) {
+		return custDao.update(customerForm);
+	}
 //
 //	public void delete(int id) {
 //		// TODO Auto-generated method stub
 //		
 //	}
 //
-//	public CustomerForm findById(int id) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
+	public CustomerForm findById(int id) {
+		return custDao.findById(id);
+	}
 //
 //	public List<CustomerForm> findByName(String name) {
 //		// TODO Auto-generated method stub

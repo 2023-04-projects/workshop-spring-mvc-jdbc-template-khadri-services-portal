@@ -2,9 +2,12 @@ package com.khadri.spring.mvc.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.khadri.spring.customer.form.CustomerForm;
@@ -30,14 +33,13 @@ public class CustomerController {
 		return "redirect:/";
 	}
 
-//	// Update existing student
-//	@PostMapping("/update")
-//	public String updateStudent(@ModelAttribute("studentForm") StudentForm student, Model model) {
-//		studentService.update(student);
-//		model.addAttribute("studentForm", new StudentForm()); // reset form
-//		return "khadri-services-portal";
-//	}
-//
+
+	@PostMapping("/update")
+	public String updateCustomer(@ModelAttribute("customerForm") CustomerForm customerForm, Model model) {
+		customerService.update(customerForm);
+		model.addAttribute("customerForm", new CustomerForm()); // reset form
+		return "khadri-services-portal";
+	}
 //	// Delete student by ID
 //	@PostMapping("/delete")
 //	public String deleteStudent(@RequestParam("id") int id, Model model) {
@@ -46,15 +48,14 @@ public class CustomerController {
 //		return "khadri-services-portal";
 //	}
 //
-//	// Search student by ID
-//	@GetMapping("/find/by/id")
-//	public String searchById(@RequestParam("id") int id, Model model) {
-//		System.out.println("Entered into StudentController:searchById");
-//		StudentForm found = studentService.findById(id);
-//		model.addAttribute("foundStudent", found);
-//		model.addAttribute("studentForm", new StudentForm());
-//		return "khadri-services-portal";
-//	}
+	@GetMapping("/find/by/id")
+	public String searchById(@RequestParam("id") int id, Model model) {
+		System.out.println("Entered into CustomerController:searchById");
+		CustomerForm found = customerService.findById(id);
+		model.addAttribute("foundCustomer", found);
+		model.addAttribute("customerForm", new CustomerForm());
+		return "khadri-services-portal";
+	}
 //
 //	@GetMapping("/find/by/name")
 //	public String searchByName(@RequestParam("name") String name, Model model) {
