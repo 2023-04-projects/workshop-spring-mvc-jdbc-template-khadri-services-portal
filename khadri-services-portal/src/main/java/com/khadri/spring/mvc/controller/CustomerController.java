@@ -27,7 +27,6 @@ public class CustomerController {
 		this.customerService = customerService;
 	}
 
-	// Save a new student
 	@PostMapping("/save")
 	public String saveCustomer(@ModelAttribute("customerForm") CustomerForm customerForm,
 			RedirectAttributes redirectAttributes) {
@@ -36,7 +35,6 @@ public class CustomerController {
 		return "redirect:/";
 	}
 
-
 	@PostMapping("/update")
 	public String updateCustomer(@ModelAttribute("customerForm") CustomerForm customerForm, Model model) {
 		customerService.update(customerForm);
@@ -44,10 +42,13 @@ public class CustomerController {
 		model.addAttribute("studentForm", new StudentForm()); // reset form
 		return "khadri-services-portal";
 	}
+
 	@PostMapping("/delete")
 	public String deleteCustomer(@RequestParam("id") int id, Model model) {
-	customerService.delete(id);
+		customerService.delete(id);
 		model.addAttribute("customerForm", new CustomerForm());
+		model.addAttribute("studentForm", new StudentForm()); // reset form
+
 		return "khadri-services-portal";
 	}
 
@@ -57,15 +58,18 @@ public class CustomerController {
 		CustomerForm found = customerService.findById(id);
 		model.addAttribute("foundCustomer", found);
 		model.addAttribute("customerForm", new CustomerForm());
+		model.addAttribute("studentForm", new StudentForm()); // reset form
+
 		return "khadri-services-portal";
 	}
-	
 
 	@GetMapping("/find/by/name")
 	public String searchByName(@RequestParam("name") String name, Model model) {
 		List<CustomerForm> customerForm = customerService.findByName(name);
 		model.addAttribute("customerByName", customerForm);
 		model.addAttribute("customerForm", new CustomerForm()); // Keep form model ready
+		model.addAttribute("studentForm", new StudentForm()); // reset form
+
 		return "khadri-services-portal";
 	}
 
@@ -74,14 +78,18 @@ public class CustomerController {
 		List<CustomerForm> customerForm = customerService.findByAddress(address);
 		model.addAttribute("customerByAddress", customerForm);
 		model.addAttribute("customerForm", new CustomerForm());
+		model.addAttribute("studentForm", new StudentForm()); // reset form
+
 		return "khadri-services-portal";
 	}
 
 	@GetMapping("/find/by/phoneNumber")
-	public String searchByPhoneNumber(@RequestParam("phoneNumber") int phoneNumber, Model model) {
+	public String searchByPhoneNumber(@RequestParam("phoneNumber") long phoneNumber, Model model) {
 		List<CustomerForm> customerForm = customerService.findByPhoneNumber(phoneNumber);
 		model.addAttribute("customerByPhoneNumber", customerForm);
 		model.addAttribute("customerForm", new CustomerForm());
+		model.addAttribute("studentForm", new StudentForm()); // reset form
+
 		return "khadri-services-portal";
 	}
 

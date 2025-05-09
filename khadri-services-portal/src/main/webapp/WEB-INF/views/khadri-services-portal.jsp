@@ -303,7 +303,7 @@
 		</div>
 		 <div id="delete-customer-form-section" class="form-container" style="display: none;">
             <h3>Delete Customer</h3>
-            <form action="${pageContext.request.contextPath}/delete" method="post">
+            <form action="${pageContext.request.contextPath}/customer/delete" method="post">
                 <label for="deleteId">Enter Customer ID to Delete:</label>
                 <input type="text" id="deleteId" name="id" required />
                 <input type="submit" value="Delete" />
@@ -317,7 +317,7 @@
 		        <input type="submit" value="Search" />
 		    </form>
 		</div>
-		<c:if test="${not empty customer}">
+		<c:if test="${not empty customerByName}">
 		    <div id="search-customer-by-name-result-section" class="grid-section">
 		        <h3>Matching Customer</h3>
 		        <table border="1" cellpadding="10" cellspacing="0">
@@ -377,7 +377,7 @@
 		</div>
 		
 		<c:if test="${not empty customerByPhoneNumber}">
-		    <div id="search-customer-by-phoneNumber-result-section" class="grid-section">
+		    <div id="search-customer-by-phone-number-result-section" class="grid-section">
 		        <h3>Matching Customer (By PhoneNumber)</h3>
 		        <table border="1" cellpadding="10" cellspacing="0">
 		            <tr>

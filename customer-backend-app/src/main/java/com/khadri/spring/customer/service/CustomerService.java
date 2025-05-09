@@ -18,8 +18,8 @@ public class CustomerService {
         this.custDao = custDao;
     }
 
-	public CustomerForm save(CustomerForm customer) {
-		return custDao.save(customer);
+	public CustomerForm save(CustomerForm customerForm) {
+		return custDao.save(customerForm);
 	}
 	public CustomerForm update(CustomerForm customerForm) {
 		return custDao.update(customerForm);
@@ -39,7 +39,7 @@ public class CustomerService {
 		return custDao.findByAddress(address);
 	}
 
-	public List<CustomerForm> findByPhoneNumber(int phoneNumber) {
+	public List<CustomerForm> findByPhoneNumber(long phoneNumber) {
 		return custDao.findByPhoneNumber(phoneNumber);
 	}
 }

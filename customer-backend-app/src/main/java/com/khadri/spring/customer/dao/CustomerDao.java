@@ -74,11 +74,12 @@ public class CustomerDao {
 				address);
 	}
 
-	public List<CustomerForm> findByPhoneNumber(int phoneNumber) {
+	public List<CustomerForm> findByPhoneNumber(long phoneNumber) {
 		System.out.println("CustomerDao : findByPhoneNumber(-)");
 		return jdbcTemplate.query(CustomerQueries.FIND_BY_PHONENUMBER.getQuery(), new BeanPropertyRowMapper<>(CustomerForm.class),
 				phoneNumber);
 	}
+	
     public void delete(int id) {
 		System.out.println("CustomerDao : delete(-)");
 		jdbcTemplate.update(CustomerQueries.DELETE.getQuery(), id);
