@@ -12,8 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.khadri.spring.student.form.StudentForm;
 import com.khadri.spring.student.service.StudentService;
+import com.khadri.spring.customer.form.CustomerForm;
+import com.khadri.spring.student.form.StudentForm;
 
 @Controller
 @RequestMapping("/student")
@@ -30,6 +31,7 @@ public class StudentController {
 	@GetMapping("/")
 	public String showPortal(Model model) {
 		model.addAttribute("studentForm", new StudentForm());
+		model.addAttribute("customerForm", new CustomerForm());
 		return "khadri-services-portal"; // your JSP page name
 	}
 
@@ -47,7 +49,7 @@ public class StudentController {
 	public String updateStudent(@ModelAttribute("studentForm") StudentForm student, Model model) {
 		studentService.update(student);
 		model.addAttribute("studentForm", new StudentForm()); // reset form
-		return "student-portal";
+		return "khadri-services-portal";
 	}
 
 	// Delete student by ID
@@ -55,7 +57,7 @@ public class StudentController {
 	public String deleteStudent(@RequestParam("id") int id, Model model) {
 		studentService.delete(id);
 		model.addAttribute("studentForm", new StudentForm());
-		return "student-portal";
+		return "khadri-services-portal";
 	}
 
 	// Search student by ID
@@ -65,7 +67,7 @@ public class StudentController {
 		StudentForm found = studentService.findById(id);
 		model.addAttribute("foundStudent", found);
 		model.addAttribute("studentForm", new StudentForm());
-		return "student-portal";
+		return "khadri-services-portal";
 	}
 	
 	@GetMapping("/find/by/name")
@@ -73,7 +75,7 @@ public class StudentController {
 	    List<StudentForm> students = studentService.findByName(name);
 	    model.addAttribute("studentsByName", students);
 	    model.addAttribute("studentForm", new StudentForm()); // Keep form model ready
-	    return "student-portal";
+	    return "khadri-services-portal";
 	}
 	
 	@GetMapping("/find/by/course")
@@ -81,7 +83,7 @@ public class StudentController {
 	    List<StudentForm> students = studentService.findByCourse(course);
 	    model.addAttribute("studentsByCourse", students);
 	    model.addAttribute("studentForm", new StudentForm());
-	    return "student-portal";
+	    return "khadri-services-portal";
 	}
 
 	@GetMapping("/find/by/marks")
@@ -89,7 +91,7 @@ public class StudentController {
 	    List<StudentForm> students = studentService.findByMarks(marks);
 	    model.addAttribute("studentsByMarks", students);
 	    model.addAttribute("studentForm", new StudentForm());
-	    return "student-portal";
+	    return "khadri-services-portal";
 	}
 
 }

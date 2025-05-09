@@ -1,7 +1,5 @@
 target/
 .mvn/wrapper/maven-wrapper.jar
-.settings
 .classpath
-.project
-.mvn/
+.settings/
 /bin/

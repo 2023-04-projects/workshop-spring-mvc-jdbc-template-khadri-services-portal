@@ -1,4 +1,4 @@
-package com.khadri.spring.student.config;
+package com.khadri.spring.customer.config;
 
 import javax.sql.DataSource;
 
@@ -9,7 +9,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 @Configuration
-@ComponentScan(basePackages = { "com.khadri.spring.student" })
-public class StudentAppConfig {
+@ComponentScan(basePackages = "com.khadri.spring.customer")
+public class CustomerAppConfig {
+
 
 }
