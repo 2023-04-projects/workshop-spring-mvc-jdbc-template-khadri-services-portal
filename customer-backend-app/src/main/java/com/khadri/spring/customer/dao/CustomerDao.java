@@ -1,88 +1,176 @@
 package com.khadri.spring.customer.dao;
 
-import java.sql.PreparedStatement;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.support.GeneratedKeyHolder;
-import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
-import com.khadri.spring.customer.config.query.constants.CustomerQueries;
-import com.khadri.spring.customer.form.CustomerForm;
-
 @Repository
-public class CustomerDao {
+public class CustomerDAO {
 
-    private JdbcTemplate jdbcTemplate;
+//	private Connection getConnection() throws Exception {
+//		// Use your JDBC connection settings here
+//		Class.forName("com.mysql.cj.jdbc.Driver");
+//		return DriverManager.getConnection("jdbc:mysql://localhost:3306/2024_batch", "root", "root");
+//	}
 
-    @Autowired
-    public CustomerDao(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-    }
-
-//    public CustomerForm findById(int id) {
-//        return jdbcTemplate.queryForObject(CustomerQueries.FIND_BY_ID.getQuery(),
-//            new BeanPropertyRowMapper<>(CustomerForm.class), id);
-//    }
+//	public CustomerForm save(CustomerForm student) {
+//		String sql = "INSERT INTO students (name, course, marks) VALUES (?, ?, ?)";
+//		try (Connection con = getConnection();
+//				PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 //
-//    public List<CustomerForm> findByName(String name) {
-//        return jdbcTemplate.query(CustomerQueries.FIND_BY_NAME.getQuery(),
-//            new BeanPropertyRowMapper<>(CustomerForm.class), "%" + name + "%");
-//    }
-
-    public CustomerForm save(CustomerForm customer) {
-        KeyHolder keyHolder = new GeneratedKeyHolder();
-
-        jdbcTemplate.update(connection -> {
-            PreparedStatement ps = connection.prepareStatement(
-            		CustomerQueries.INSERT.getQuery(), Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, customer.getName());
-            ps.setString(2, customer.getAddress());
-            ps.setLong(3, customer.getPhoneNumber());
-            return ps;
-        }, keyHolder);
-
-        customer.setId(keyHolder.getKey().intValue());
-        return customer;
-    }
-
-//    public CustomerForm update(CustomerForm customer) {
-//        jdbcTemplate.update(connection -> {
-//            PreparedStatement ps = connection.prepareStatement(CustomerQueries.UPDATE.getQuery());
-//            ps.setString(1, customer.getName());
-//            ps.setString(2, customer.getAddress());
-//            ps.setLong(3, customer.getPhoneNumber());
-//            ps.setInt(4, customer.getId());
-//            return ps;
-//        });
-//        return customer;
-//    }
+//			ps.setString(1, student.getName());
+//			ps.setString(2, student.getCourse());
+//			ps.setInt(3, student.getMarks());
+//			ps.executeUpdate();
 //
-//    public CustomerForm partialUpdate(int id, Map<String, Object> updates) {
-//        StringBuilder sql = new StringBuilder("UPDATE customers SET ");
-//        List<Object> values = new ArrayList<>();
+//			ResultSet rs = ps.getGeneratedKeys();
+//			if (rs.next()) {
+//				student.setId(rs.getInt(1));
+//			}
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		return student;
+//	}
 //
-//        updates.forEach((key, value) -> {
-//            sql.append(key).append("=?, ");
-//            values.add(value);
-//        });
+//	public StudentForm update(StudentForm student) {
+//		String sql = "UPDATE students SET name=?, course=?, marks=? WHERE id=?";
+//		try (Connection con = getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
 //
-//        sql.setLength(sql.length() - 2); // remove trailing comma
-//        sql.append(" WHERE id=?");
-//        values.add(id);
+//			ps.setString(1, student.getName());
+//			ps.setString(2, student.getCourse());
+//			ps.setInt(3, student.getMarks());
+//			ps.setInt(4, student.getId());
+//			ps.executeUpdate();
 //
-//        jdbcTemplate.update(sql.toString(), values.toArray());
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
 //
-//        return findById(id);
-//    }
+//		return findById(student.getId());
+//	}
 //
-//    public void delete(int id) {
-//        jdbcTemplate.update(CustomerQueries.DELETE.getQuery(), id);
-//    }
+//	public StudentForm partialUpdate(int id, Map<String, Object> updates) {
+//
+//		StringBuilder builderSql = new StringBuilder("UPDATE students SET ");
+//
+//		List<Object> values = new ArrayList<>();
+//
+//		updates.keySet().stream().forEach(eachkey -> {
+//			builderSql.append(eachkey).append("=?, ");
+//			values.add(updates.get(eachkey));
+//		});
+//
+//		builderSql.setLength(builderSql.length() - 2);
+//		builderSql.append(" WHERE id=?");
+//		values.add(id);
+//
+//		try (Connection con = getConnection(); PreparedStatement ps = con.prepareStatement(builderSql.toString())) {
+//
+//			for (int i = 0; i < values.size(); i++) {
+//				ps.setObject(i + 1, values.get(i));
+//			}
+//
+//			ps.executeUpdate();
+//
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//
+//		return findById(id);
+//	}
+//
+//	public void delete(int id) {
+//		String sql = "DELETE FROM students WHERE id=?";
+//		try (Connection con = getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
+//
+//			ps.setInt(1, id);
+//			ps.executeUpdate();
+//
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//	}
+//
+//	public StudentForm findById(int id) {
+//		StudentForm s = null;
+//		try (Connection con = getConnection();
+//				PreparedStatement ps = con.prepareStatement(Queries.FIND_BY_ID.getQuery())) {
+//
+//			ps.setInt(1, id);
+//			ResultSet rs = ps.executeQuery();
+//			if (rs.next()) {
+//				s = new StudentForm();
+//				s.setId(rs.getInt("id"));
+//				s.setName(rs.getString("name"));
+//				s.setCourse(rs.getString("course"));
+//				s.setMarks(rs.getInt("marks"));
+//			}
+//
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		return s;
+//	}
+//
+//	public List<StudentForm> findByName(String name) {
+//		List<StudentForm> list = new ArrayList<>();
+//		try (Connection con = getConnection();
+//				PreparedStatement ps = con.prepareStatement(Queries.FIND_BY_NAME.getQuery())) {
+//
+//			ps.setString(1, "%" + name + "%");
+//			ResultSet rs = ps.executeQuery();
+//
+//			while (rs.next()) {
+//				StudentForm s = new StudentForm();
+//				s.setId(rs.getInt("id"));
+//				s.setName(rs.getString("name"));
+//				s.setCourse(rs.getString("course"));
+//				s.setMarks(rs.getInt("marks"));
+//				list.add(s);
+//			}
+//
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		return list;
+//	}
+//
+//	public List<StudentForm> findByCourse(String course) {
+//		List<StudentForm> list = new ArrayList<>();
+//		String sql = "SELECT * FROM students WHERE course LIKE ?";
+//		try (Connection con = getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
+//			ps.setString(1, "%" + course + "%");
+//			ResultSet rs = ps.executeQuery();
+//			while (rs.next()) {
+//				StudentForm s = new StudentForm();
+//				s.setId(rs.getInt("id"));
+//				s.setName(rs.getString("name"));
+//				s.setCourse(rs.getString("course"));
+//				s.setMarks(rs.getInt("marks"));
+//				list.add(s);
+//			}
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		return list;
+//	}
+//
+//	public List<StudentForm> findByMarks(int marks) {
+//		List<StudentForm> list = new ArrayList<>();
+//		String sql = "SELECT * FROM students WHERE marks = ?";
+//		try (Connection con = getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
+//			ps.setInt(1, marks);
+//			ResultSet rs = ps.executeQuery();
+//			while (rs.next()) {
+//				StudentForm s = new StudentForm();
+//				s.setId(rs.getInt("id"));
+//				s.setName(rs.getString("name"));
+//				s.setCourse(rs.getString("course"));
+//				s.setMarks(rs.getInt("marks"));
+//				list.add(s);
+//			}
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		return list;
+//	}
 }
