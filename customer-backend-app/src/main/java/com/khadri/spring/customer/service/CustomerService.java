@@ -1,5 +1,7 @@
 package com.khadri.spring.customer.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,30 +25,22 @@ public class CustomerService {
 	public CustomerForm update(CustomerForm customerForm) {
 		return custDao.update(customerForm);
 	}
-//
-//	public void delete(int id) {
-//		// TODO Auto-generated method stub
-//		
-//	}
-//
+
 	public CustomerForm findById(int id) {
 		return custDao.findById(id);
 	}
-//
-//	public List<CustomerForm> findByName(String name) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
-//	public List<CustomerForm> findByAddress(String address) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
-//	public List<CustomerForm> findByPhoneNumber(long phoneNumber) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
-//    
+	public void delete(int id) {
+		custDao.delete(id);
+	}
+	public List<CustomerForm> findByName(String name) {
+		return custDao.findByName(name);
+	}
+
+	public List<CustomerForm> findByAddress(String address) {
+		return custDao.findByAddress(address);
+	}
+
+	public List<CustomerForm> findByPhoneNumber(int phoneNumber) {
+		return custDao.findByPhoneNumber(phoneNumber);
+	}
 }

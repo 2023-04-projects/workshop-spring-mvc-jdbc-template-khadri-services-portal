@@ -2,6 +2,7 @@ package com.khadri.spring.customer.dao;
 
 import java.sql.PreparedStatement;
 import java.sql.Statement;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -56,6 +57,28 @@ public class CustomerDao {
 		System.out.println("CustomerDao : findById(-)");
 		return jdbcTemplate.queryForObject(CustomerQueries.FIND_BY_ID.getQuery(),
 				new BeanPropertyRowMapper<>(CustomerForm.class), id);
+	}
+
+    public List<CustomerForm> findByName(String name) {
+		System.out.println("CustomerDao : findByName(-)");
+		return jdbcTemplate.query(CustomerQueries.FIND_BY_NAME.getQuery(), new BeanPropertyRowMapper<>(CustomerForm.class),
+				name);
+	}
+
+	public List<CustomerForm> findByAddress(String address) {
+		System.out.println("CustomerDao : findByAddress(-)");
+		return jdbcTemplate.query(CustomerQueries.FIND_BY_ADDRESS.getQuery(), new BeanPropertyRowMapper<>(CustomerForm.class),
+				address);
+	}
+
+	public List<CustomerForm> findByPhoneNumber(int phoneNumber) {
+		System.out.println("CustomerDao : findByPhoneNumber(-)");
+		return jdbcTemplate.query(CustomerQueries.FIND_BY_PHONENUMBER.getQuery(), new BeanPropertyRowMapper<>(CustomerForm.class),
+				phoneNumber);
+	}
+    public void delete(int id) {
+		System.out.println("CustomerDao : delete(-)");
+		jdbcTemplate.update(CustomerQueries.DELETE.getQuery(), id);
 	}
 
 }
