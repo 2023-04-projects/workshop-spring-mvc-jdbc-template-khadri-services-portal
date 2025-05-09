@@ -285,7 +285,7 @@
 		</c:if>
 	        <div id="update-customer-form-section" class="form-container" style="display: none;">
 		    <h3>Update Customer</h3>
-		    <form:form modelAttribute="customerForm" method="post" action="${pageContext.request.contextPath}/update">
+		    <form:form modelAttribute="customerForm" method="post" action="${pageContext.request.contextPath}/customer/update">
 		        <form:label path="id">ID:</form:label>
 		        <form:input path="id" required="true"/>
 		        <br /><br />

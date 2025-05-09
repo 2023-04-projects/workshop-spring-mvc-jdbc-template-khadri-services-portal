@@ -16,7 +16,7 @@ import com.khadri.spring.customer.form.CustomerForm;
 import com.khadri.spring.customer.service.CustomerService;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/customer")
 public class CustomerController {
 
 	private CustomerService customerService;
