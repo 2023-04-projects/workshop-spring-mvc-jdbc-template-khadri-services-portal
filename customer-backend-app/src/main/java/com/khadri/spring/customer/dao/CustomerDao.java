@@ -17,12 +17,12 @@ import com.khadri.spring.customer.config.query.constants.CustomerQueries;
 import com.khadri.spring.customer.form.CustomerForm;
 
 @Repository
-public class CustomerJdbcTemplateDao {
+public class CustomerDao {
 
     private JdbcTemplate jdbcTemplate;
 
     @Autowired
-    public CustomerJdbcTemplateDao(JdbcTemplate jdbcTemplate) {
+    public CustomerDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 

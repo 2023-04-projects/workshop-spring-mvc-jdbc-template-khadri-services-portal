@@ -1,24 +1,17 @@
 package com.khadri.spring.mvc.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.khadri.spring.customer.form.CustomerForm;
 import com.khadri.spring.customer.service.CustomerService;
-import com.khadri.spring.student.form.StudentForm;
-
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/customer")
 public class CustomerController {
 
 	private CustomerService customerService;
@@ -28,63 +21,63 @@ public class CustomerController {
 		this.customerService = customerService;
 	}
 
-	@GetMapping("/customer")
-	public String showCustomerPortal(Model model) {
-		model.addAttribute("customerForm", new CustomerForm());
-		return "khadri-services-portal";
+	// Save a new student
+	@PostMapping("/save")
+	public String saveCustomer(@ModelAttribute("customerForm") CustomerForm customerForm,
+			RedirectAttributes redirectAttributes) {
+		CustomerForm resultcustomerForm = customerService.save(customerForm);
+		redirectAttributes.addFlashAttribute("addedCustomer", resultcustomerForm);
+		return "redirect:/";
 	}
 
-//	@PostMapping("/customer/save")
-//	public String saveCustomer(@ModelAttribute("customerForm") CustomerForm customer,
-//			RedirectAttributes redirectAttributes) {
-//		CustomerForm savedCustomer = customerService.save(customer);
-//		redirectAttributes.addFlashAttribute("addedCustomer", savedCustomer);
-//		return "redirect:/customer";
+//	// Update existing student
+//	@PostMapping("/update")
+//	public String updateStudent(@ModelAttribute("studentForm") StudentForm student, Model model) {
+//		studentService.update(student);
+//		model.addAttribute("studentForm", new StudentForm()); // reset form
+//		return "khadri-services-portal";
+//	}
+//
+//	// Delete student by ID
+//	@PostMapping("/delete")
+//	public String deleteStudent(@RequestParam("id") int id, Model model) {
+//		studentService.delete(id);
+//		model.addAttribute("studentForm", new StudentForm());
+//		return "khadri-services-portal";
+//	}
+//
+//	// Search student by ID
+//	@GetMapping("/find/by/id")
+//	public String searchById(@RequestParam("id") int id, Model model) {
+//		System.out.println("Entered into StudentController:searchById");
+//		StudentForm found = studentService.findById(id);
+//		model.addAttribute("foundStudent", found);
+//		model.addAttribute("studentForm", new StudentForm());
+//		return "khadri-services-portal";
+//	}
+//
+//	@GetMapping("/find/by/name")
+//	public String searchByName(@RequestParam("name") String name, Model model) {
+//		List<StudentForm> students = studentService.findByName(name);
+//		model.addAttribute("studentsByName", students);
+//		model.addAttribute("studentForm", new StudentForm()); // Keep form model ready
+//		return "khadri-services-portal";
+//	}
+//
+//	@GetMapping("/find/by/course")
+//	public String searchByCourse(@RequestParam("course") String course, Model model) {
+//		List<StudentForm> students = studentService.findByCourse(course);
+//		model.addAttribute("studentsByCourse", students);
+//		model.addAttribute("studentForm", new StudentForm());
+//		return "khadri-services-portal";
+//	}
+//
+//	@GetMapping("/find/by/marks")
+//	public String searchByMarks(@RequestParam("marks") int marks, Model model) {
+//		List<StudentForm> students = studentService.findByMarks(marks);
+//		model.addAttribute("studentsByMarks", students);
+//		model.addAttribute("studentForm", new StudentForm());
+//		return "khadri-services-portal";
 //	}
 
-//	@PostMapping("/customer/update")
-//	public String updateCustomer(@ModelAttribute("customerForm") CustomerForm customer, Model model) {
-//		customerService.update(customer);
-//		model.addAttribute("customerForm", new CustomerForm());
-//		return "khadri-services-portal";
-//	}
-//
-//	@PostMapping("/customer/delete")
-//	public String deleteCustomer(@RequestParam("id") int id, Model model) {
-//		customerService.delete(id);
-//		model.addAttribute("customerForm", new CustomerForm());
-//		return "khadri-services-portal";
-//	}
-//
-//	@GetMapping("/customer/find/by/id")
-//	public String findById(@RequestParam("id") int id, Model model) {
-//		CustomerForm customer = customerService.findById(id);
-//		model.addAttribute("foundCustomer", customer);
-//		model.addAttribute("customerForm", new CustomerForm());
-//		return "khadri-services-portal";
-//	}
-//
-//	@GetMapping("/customer/find/by/name")
-//	public String findByName(@RequestParam("name") String name, Model model) {
-//		List<CustomerForm> customers = customerService.findByName(name);
-//		model.addAttribute("customersByName", customers);
-//		model.addAttribute("customerForm", new CustomerForm());
-//		return "khadri-services-portal";
-//	}
-//	@GetMapping("/find/by/address")
-//	public String searchByAddress(@RequestParam("course") String address, Model model) {
-//	    List<CustomerForm> customer = customerService.findByAddress(address);
-//	    model.addAttribute("studentsByAddress", customer);
-//	    model.addAttribute("customerForm", new CustomerForm());
-//	    return "khadri-services-portal";
-//	}
-//
-//	@GetMapping("/find/by/phoneNumber")
-//	public String searchByPhoneNumber(@RequestParam("phoneNumber") int phoneNumber, Model model) {
-//	    List<CustomerForm> customer = customerService.findByPhoneNumber(phoneNumber);
-//	    model.addAttribute("customerByMarks", customer);
-//	    model.addAttribute("customerForm", new CustomerForm());
-//	    return "khadri-services-portal";
-//	}
-//	
 }

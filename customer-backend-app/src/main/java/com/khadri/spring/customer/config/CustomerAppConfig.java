@@ -12,20 +12,5 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 @ComponentScan(basePackages = "com.khadri.spring.customer")
 public class CustomerAppConfig {
 
-	@Bean
-	public DataSource dataSource() {
-		DriverManagerDataSource dms = new DriverManagerDataSource();
-		dms.setDriverClassName("com.mysql.cj.jdbc.Driver");
-		dms.setUrl("jdbc:mysql://localhost:3306/2024_batch");
-		dms.setUsername("root");
-		dms.setPassword("root");
-		return dms;
-	}
-
-	@Bean
-	public JdbcTemplate jdbcTemplate(DataSource dataSource) {
-		JdbcTemplate template = new JdbcTemplate(dataSource);
-		return template;
-	}
 
 }

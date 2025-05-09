@@ -1,27 +1,25 @@
 package com.khadri.spring.customer.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.khadri.spring.customer.dao.CustomerJdbcTemplateDao;
+import com.khadri.spring.customer.dao.CustomerDao;
 import com.khadri.spring.customer.form.CustomerForm;
 
 @Service
 public class CustomerService {
 
-    private CustomerJdbcTemplateDao jdbcTemplateDao;
+    private CustomerDao custDao;
 
     @Autowired
-    public CustomerService(CustomerJdbcTemplateDao jdbcTemplateDao) {
-        this.jdbcTemplateDao = jdbcTemplateDao;
+    public CustomerService(CustomerDao custDao) {
+        this.custDao = custDao;
     }
 
-//	public CustomerForm save(CustomerForm customer) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
+	public CustomerForm save(CustomerForm customer) {
+		custDao.save(customer);
+		return null;
+	}
 //
 //	public CustomerForm update(CustomerForm customer) {
 //		return customer;
