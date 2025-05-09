@@ -29,6 +29,7 @@ public class AppConfig implements WebMvcConfigurer {
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/resources/**").addResourceLocations("/WEB-INF/classes/resources/static/css/")
 				.addResourceLocations("/WEB-INF/classes/resources/static/js/");
+
 	}
 
 	@Bean
