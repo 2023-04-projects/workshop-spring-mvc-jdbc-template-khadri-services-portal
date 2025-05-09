@@ -1,7 +1,6 @@
 package com.khadri.spring.customer.service;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,27 +18,41 @@ public class CustomerService {
         this.jdbcTemplateDao = jdbcTemplateDao;
     }
 
-    public CustomerForm save(CustomerForm customer) {
-        return jdbcTemplateDao.save(customer);
-    }
-
-    public CustomerForm update(CustomerForm customer) {
-        return jdbcTemplateDao.update(customer);
-    }
-
-    public CustomerForm partialUpdate(int id, Map<String, Object> updates) {
-        return jdbcTemplateDao.partialUpdate(id, updates);
-    }
-
-    public void delete(int id) {
-        jdbcTemplateDao.delete(id);
-    }
-
-    public CustomerForm findById(int id) {
-        return jdbcTemplateDao.findById(id);
-    }
-
-    public List<CustomerForm> findByName(String name) {
-        return jdbcTemplateDao.findByName(name);
-    }
+//	public CustomerForm save(CustomerForm customer) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+//
+//	public CustomerForm update(CustomerForm customer) {
+//		return customer;
+//		// TODO Auto-generated method stub
+//		
+//	}
+//
+//	public void delete(int id) {
+//		// TODO Auto-generated method stub
+//		
+//	}
+//
+//	public CustomerForm findById(int id) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+//
+//	public List<CustomerForm> findByName(String name) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+//
+//	public List<CustomerForm> findByAddress(String address) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+//
+//	public List<CustomerForm> findByPhoneNumber(long phoneNumber) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+//
+//    
 }

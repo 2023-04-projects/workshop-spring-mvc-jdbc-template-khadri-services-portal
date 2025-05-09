@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Khadri Services Portal</title>
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/khadri-service-portal.css" />
+	href="${pageContext.request.contextPath}/resources/student-portal.css" />
 
 <script> 
         function addStudent() {
@@ -95,17 +95,9 @@
                 "search-student-by-marks-result-section",
                 "add-student-form-result-section",
                 "add-customer-form-section",
-                "update-customer-form-section",
-                "delete-customer-form-section",
-                "search-customer-by-id-section",
-                "search-customer-by-name-section",
-                "search-customer-by-address-section",
-                "search-customer-by-phoneNumber-section",
-                "search-customer-by-id-result-section",
-                "search-customer-by-name-result-section",
-                "search-customer-by-address-result-section",
-                "search-customer-by-phoneNumber-result-section",
-                "add-customer-form-result-section"
+                "add-customer-form-result-section",
+
+                
 
                   ];
             sections.forEach(id => {
@@ -116,6 +108,7 @@
     </script>
 </head>
 <body>
+
 
 	<header> Khadri Service Portal </header>
 
@@ -137,17 +130,18 @@
 				<a href="javascript:void(0);" onclick="searchCustomerByID()"> Search Customer By ID</a>
 				<a href="javascript:void(0);" onclick="searchCustomerByName()"> Search Customer By Name</a>
 				<a href="javascript:void(0);" onclick="searchCustomerByAddress()"> Search Customer By Address</a>
-				<a href="javascript:void(0);" onclick="searchCustomerByPhoneumber()"> Search Customer By PhoneNumber</a>
+				<a href="javascript:void(0);" onclick="searchCustomerByPhoneNumber()"> Search Customer By PhoneNumber</a>
 				
 			</div>
 		</div>
-<div class="right-pane">
+	
+			<div class="right-pane">
 			<h2>Forms</h2>
 
 			<div id="search-student-by-id-section" class="form-container"
 				style="display: none;">
 				<h3>Search Student By Id</h3>
-				<form action="${pageContext.request.contextPath}/student/find/by/id"
+				<form action="${pageContext.request.contextPath}/find/by/id"
 					method="get">
 					<label for="id">Enter Student Id:</label> <input type="text"
 						id="id" name="id" required /> <input type="submit" value="Search" />
@@ -178,7 +172,7 @@
 			<div id="search-student-by-name-section" class="form-container"
 				style="display: none;">
 				<h3>Search Student By Name</h3>
-				<form action="${pageContext.request.contextPath}/student/find/by/name"
+				<form action="${pageContext.request.contextPath}/find/by/name"
 					method="get">
 					<label for="name">Enter Student Name:</label> <input type="text"
 						id="name" name="name" required /> <input type="submit"
@@ -211,7 +205,7 @@
 			<div id="search-student-by-course-section" class="form-container"
 				style="display: none;">
 				<h3>Search Student By Course</h3>
-				<form action="${pageContext.request.contextPath}/student/find/by/course"
+				<form action="${pageContext.request.contextPath}/find/by/course"
 					method="get">
 					<label for="course">Enter Course Name:</label> <input type="text"
 						id="course" name="course" required /> <input type="submit"
@@ -246,7 +240,7 @@
 			<div id="search-student-by-marks-section" class="form-container"
 				style="display: none;">
 				<h3>Search Student By Marks</h3>
-				<form action="${pageContext.request.contextPath}/student/find/by/marks"
+				<form action="${pageContext.request.contextPath}/find/by/marks"
 					method="get">
 					<label for="marks">Enter Marks:</label> <input type="number"
 						id="marks" name="marks" required /> <input type="submit"
@@ -280,7 +274,7 @@
 			<div id="add-student-form-section" class="form-container">
 				<h3>Add Student</h3>
 				<form:form modelAttribute="studentForm" method="post"
-					action="${pageContext.request.contextPath}/student/save">
+					action="${pageContext.request.contextPath}/save">
 					<form:label path="id">ID:</form:label>
 					<form:input path="id" readonly="true" />
 					<br />
@@ -306,7 +300,7 @@
 				style="display: none;">
 				<h3>Update Student</h3>
 				<form:form modelAttribute="studentForm" method="post"
-					action="${pageContext.request.contextPath}/student/update">
+					action="${pageContext.request.contextPath}/update">
 					<form:label path="id">ID:</form:label>
 					<form:input path="id" required="true" />
 					<br />
@@ -331,7 +325,7 @@
 			<div id="delete-student-form-section" class="form-container"
 				style="display: none;">
 				<h3>Delete Student</h3>
-				<form action="${pageContext.request.contextPath}/student/delete"
+				<form action="${pageContext.request.contextPath}/delete"
 					method="post">
 					<label for="deleteId">Enter Student ID to Delete:</label> <input
 						type="text" id="deleteId" name="id" required /> <input
@@ -356,14 +350,10 @@
 					</p>
 				</div>
 			</c:if>
-
-		</div>
-	</div>
-		
-<div id="add-customer-form-section" class="form-container">
+			<div id="add-customer-form-section" class="form-container">
 				<h3>Add Customer</h3>
 				<form:form modelAttribute="customerForm" method="post"
-					action="${pageContext.request.contextPath}/customer/save">
+					action="${pageContext.request.contextPath}/save">
 					<form:label path="id">ID:</form:label>
 					<form:input path="id" readonly="true" />
 					<br />
@@ -377,11 +367,31 @@
 					<br />
 					<br />
 					<form:label path="phoneNumber">PhoneNumber:</form:label>
-					<form:input path="phoneNumber" type="long" required="true" />
+					<form:input path="address" type="number" required="true" />
 					<br />
 					<br />
 					<input type="submit" value="Submit" />
 				</form:form>
 			</div>
+			<c:if test="${not empty addedCustomer}">
+				<div id="add-customer-form-result-section" class="added-record">
+					<h3>Employee Added Successfully!</h3>
+					<p>
+						<strong>ID:</strong> ${addedCustomer.id}
+					</p>
+					<p>
+						<strong>Name:</strong> ${addedCustomer.name}
+					</p>
+					<p>
+						<strong>Address:</strong> ${addedCustomer.address}
+					</p>
+					<p>
+						<strong>PhoneNumber:</strong> ${addedCustomer.phoneNumber}
+					</p>
+				</div>
+			</c:if>
+		</div>
+	</div>
+		
 </body>
 </html>

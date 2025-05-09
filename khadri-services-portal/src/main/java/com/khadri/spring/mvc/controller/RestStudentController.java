@@ -16,8 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.khadri.spring.student.service.StudentService;
 import com.khadri.spring.student.form.StudentForm;
+import com.khadri.spring.student.service.StudentService;
+
 
 @Controller
 @RequestMapping("/rest")

@@ -1,18 +1,15 @@
 package com.khadri.spring.customer.dao;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class CustomerDAO {
 
-	private Connection getConnection() throws Exception {
-		// Use your JDBC connection settings here
-		Class.forName("com.mysql.cj.jdbc.Driver");
-		return DriverManager.getConnection("jdbc:mysql://localhost:3306/2024_batch", "root", "root");
-	}
+//	private Connection getConnection() throws Exception {
+//		// Use your JDBC connection settings here
+//		Class.forName("com.mysql.cj.jdbc.Driver");
+//		return DriverManager.getConnection("jdbc:mysql://localhost:3306/2024_batch", "root", "root");
+//	}
 
 //	public CustomerForm save(CustomerForm student) {
 //		String sql = "INSERT INTO students (name, course, marks) VALUES (?, ?, ?)";
