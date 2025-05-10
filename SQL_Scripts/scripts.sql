@@ -15,3 +15,10 @@ CREATE TABLE Customer (
     address VARCHAR(100) NOT NULL,
     phoneNumber long NOT NULL
 );
+
+CREATE TABLE author (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    skillsets VARCHAR(100) NOT NULL,
+    year int NOT NULL
+);

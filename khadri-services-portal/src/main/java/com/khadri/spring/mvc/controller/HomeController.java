@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.khadri.spring.author.form.AuthorForm;
 import com.khadri.spring.customer.form.CustomerForm;
 import com.khadri.spring.student.form.StudentForm;
 
@@ -17,6 +18,7 @@ public class HomeController {
 	public String showPortal(Model model) {
 		model.addAttribute("studentForm", new StudentForm());
 		model.addAttribute("customerForm", new CustomerForm());
+		model.addAttribute("authorForm", new AuthorForm());
 		return "khadri-services-portal"; // your JSP page name
 	}
 }
