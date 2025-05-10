@@ -15,3 +15,9 @@ CREATE TABLE Customer (
     address VARCHAR(100) NOT NULL,
     phoneNumber long NOT NULL
 );
+CREATE TABLE software (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    address VARCHAR(100) NOT NULL,
+    phoneNumber long NOT NULL
+);
