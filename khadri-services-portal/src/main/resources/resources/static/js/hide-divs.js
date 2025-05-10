@@ -23,7 +23,18 @@ function hideAllForms() {
 		"search-customer-by-name-result-section",
 		"search-customer-by-address-result-section",
 		"search-customer-by-phone-number-result-section",
-		"add-customer-form-result-section"
+		"add-customer-form-result-section",
+		"update-employee-form-section",
+		"delete-employee-form-section",
+		"search-employee-by-id-section",
+		"search-employee-by-name-section",
+		"search-employee-by-salary-section",
+		"search-employee-by-id-result-section",
+		"search-employee-by-name-result-section",
+		"search-employee-by-salary-result-section",
+		"add-employee-form-section",
+		"add-employee-form-result-section"
+
 	];
 	sections.forEach(id => {
 		const el = document.getElementById(id);

@@ -15,3 +15,9 @@ CREATE TABLE Customer (
     address VARCHAR(100) NOT NULL,
     phoneNumber long NOT NULL
 );
+
+CREATE TABLE Employee (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    salary double NOT NULL
+);
