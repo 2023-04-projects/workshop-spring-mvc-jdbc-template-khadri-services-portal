@@ -9,8 +9,8 @@
 	<packaging>pom</packaging>
 	<modules>
 		<module>student-backend-app</module>
-		<module>khadri-services-portal</module>
 		<module>customer-backend-app</module>
+		<module>khadri-services-portal</module>
 	</modules>
 	<properties>
 		<java.version>17</java.version>
