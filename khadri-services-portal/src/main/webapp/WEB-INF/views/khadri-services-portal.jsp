@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/student-portal.css" />
     <script src="${pageContext.request.contextPath}/resources/student-portal.js"></script>
     <script src="${pageContext.request.contextPath}/resources/customer-portal.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/employee-portal.js"></script>
     <script src="${pageContext.request.contextPath}/resources/hide-divs.js"></script>
 </head>
 <body>
@@ -38,7 +39,18 @@
             <a href="javascript:void(0);" onclick="searchCustomerByAddress()"> Search Customer By Address</a>
 			<a href="javascript:void(0);" onclick="searchCustomerByPhoneNumber()"> Search Customer By Phone Number</a>
         </div>
+        
+        <h2>Employee Services</h2>
+        <div class="nav-links">
+            <a href="javascript:void(0);" onclick="addEmployee()"> Add Employee</a>
+            <a href="javascript:void(0);" onclick="updateEmployee()"> Update Employee</a>
+            <a href="javascript:void(0);" onclick="deleteEmployee()"> Delete Employee</a>
+            <a href="javascript:void(0);" onclick="searchEmployeeByID()"> Search Employee By ID</a>
+            <a href="javascript:void(0);" onclick="searchEmployeeByName()"> Search Employee By Name</a>
+            <a href="javascript:void(0);" onclick="searchEmployeeBySalary()"> Search Employee By Salary</a>
+        </div>
     </div>
+    
 
     <div class="right-pane">
         <h2>Forms</h2>
@@ -397,10 +409,143 @@
 		        </table>
 		    </div>
 		</c:if>
+		<!-- Employee module starts -->
+		<div id="add-employee-form-section" class="form-container">
+		    <h3>Add Employee</h3>
+		    <form:form modelAttribute="employeeForm" method="post" action="${pageContext.request.contextPath}/employee/save">
+		        <form:label path="id">ID:</form:label>
+		        <form:input path="id" readonly="true" />
+		        <br /><br />
+		        <form:label path="name">Name:</form:label>
+		        <form:input path="name" required="true" />
+		        <br /><br />
+		        <form:label path="salary">Salary:</form:label>
+		        <form:input path="salary" required="true" />
+		        <br /><br />
+		        <input type="submit" value="Submit" />
+		    </form:form>
+			</div>
+			
+		<div id="search-employee-by-id-section" class="form-container" style="display: none;">
+	            <h3>Search Employee By Id</h3>
+	            <form action="${pageContext.request.contextPath}/employee/find/by/id" method="get">
+	                <label for="id">Enter Employee Id:</label>
+	                <input type="text" id="id" name="id" required />
+	                <input type="submit" value="Search" />
+	            </form>
+	        </div>
+	        
+	         <div id="update-employee-form-section" class="form-container" style="display: none;">
+		    <h3>Update Employee</h3>
+		    <form:form modelAttribute="employeeForm" method="post" action="${pageContext.request.contextPath}/employee/update">
+		        <form:label path="id">ID:</form:label>
+		        <form:input path="id" required="true"/>
+		        <br /><br />
+		        <form:label path="name">Name:</form:label>
+		        <form:input path="name" required="true" />
+		        <br /><br />
+		        <form:label path="salary">Salary:</form:label>
+		        <form:input path="salary" required="true" />
+		        <br /><br />
+		        <input type="submit" value="Update" />
+		    </form:form>
+		</div>
+		
+		 <div id="delete-employee-form-section" class="form-container" style="display: none;">
+            <h3>Delete Employee</h3>
+            <form action="${pageContext.request.contextPath}/employee/delete" method="post">
+                <label for="deleteId">Enter Employee ID to Delete:</label>
+                <input type="text" id="deleteId" name="id" required />
+                <input type="submit" value="Delete" />
+            </form>
+        </div>
+        
+        <div id="search-employee-by-name-section" class="form-container" style="display: none;">
+		    <h3>Search Employee By Name</h3>
+		    <form action="${pageContext.request.contextPath}/employee/find/by/name" method="get">
+		        <label for="name">Enter Employee Name:</label>
+		        <input type="text" id="name" name="name" required />
+		        <input type="submit" value="Search" />
+		    </form>
+		</div>
+		<div id="search-employee-by-salary-section" class="form-container" style="display: none;">
+		    <h3>Search Employee By Salary</h3>
+		    <form action="${pageContext.request.contextPath}/employee/find/by/salary" method="get">
+		        <label for="salary">Enter Employee Salary:</label>
+		        <input type="text" id="salary" name="salary" required />
+		        <input type="submit" value="Search" />
+		    </form>
+		</div>
+		 <c:if test="${not empty addedEmployee}">
+		    <div id="add-employee-form-result-section" class="added-record">
+		        <h3>Employee Added Successfully!</h3>
+		        <p><strong>ID:</strong> ${addedEmployee.id}</p>
+		        <p><strong>Name:</strong> ${addedEmployee.name}</p>
+		        <p><strong>Salary:</strong> ${addedEmployee.salary}</p>
+		    </div>
+		</c:if>
+		
+		<c:if test="${not empty foundEmployee}">
+		    <div id="search-employee-by-id-result-section" class="grid-section" >
+		        <h3>Employee Found</h3>
+		        <table border="1" cellpadding="10" cellspacing="0">
+		            <tr>
+		                <th>ID</th>
+		                <th>Name</th>
+		                <th>Salary</th>
+		            </tr>
+		            <tr>
+		                <td>${foundEmployee.id}</td>
+		                <td>${foundEmployee.name}</td>
+		                <td>${foundEmployee.salary}</td>
+		            </tr>
+		        </table>
+		    </div>
+		</c:if>
+		
+		<c:if test="${not empty employeeByName}">
+		    <div id="search-employee-by-name-result-section" class="grid-section">
+		        <h3>Matching Employee (By Name)</h3>
+		        <table border="1" cellpadding="10" cellspacing="0">
+		            <tr>
+		                <th>ID</th>
+		                <th>Name</th>
+		                <th>Salary</th>
+		            </tr>
+		            <c:forEach var="employee" items="${employeeByName}">
+		                <tr>
+		                    <td>${employee.id}</td>
+		                    <td>${employee.name}</td>
+		                    <td>${employee.salary}</td>
+		               
+		            </tr>
+		            </c:forEach>
+		        </table>
+		    </div>
+		</c:if>
+		 <c:if test="${not empty employeeBySalary}">
+		    <div id="search-employee-by-salary-result-section" class="grid-section">
+		        <h3>Matching Employee (By Salary)</h3>
+		        <table border="1" cellpadding="10" cellspacing="0">
+		            <tr>
+		                <th>ID</th>
+		                <th>Name</th>
+		                <th>Salary</th>
+		            </tr>
+		            <c:forEach var="employee" items="${employeeBySalary}">
+		                <tr>
+		                    <td>${employee.id}</td>
+		                    <td>${employee.name}</td>
+		                    <td>${employee.salary}</td>
+		                </tr>
+		            </c:forEach>
+		        </table>
+		    </div>
+		</c:if> 
+		
+		<!-- Employee module ends --> 
     </div>
 </div>
-
-
 
 
 
