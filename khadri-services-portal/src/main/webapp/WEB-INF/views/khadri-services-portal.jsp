@@ -9,6 +9,7 @@
     <script src="${pageContext.request.contextPath}/resources/student-portal.js"></script>
     <script src="${pageContext.request.contextPath}/resources/customer-portal.js"></script>
     <script src="${pageContext.request.contextPath}/resources/employee-portal.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/author-portal.js"></script>
     <script src="${pageContext.request.contextPath}/resources/hide-divs.js"></script>
 </head>
 <body>
@@ -48,6 +49,17 @@
             <a href="javascript:void(0);" onclick="searchEmployeeByID()"> Search Employee By ID</a>
             <a href="javascript:void(0);" onclick="searchEmployeeByName()"> Search Employee By Name</a>
             <a href="javascript:void(0);" onclick="searchEmployeeBySalary()"> Search Employee By Salary</a>
+        </div>
+        
+         <h2>Author Services</h2>
+        <div class="nav-links">
+            <a href="javascript:void(0);" onclick="addAuthor()"> Add Author</a>
+            <a href="javascript:void(0);" onclick="updateAuthor()"> Update Author</a>
+            <a href="javascript:void(0);" onclick="deleteAuthor()"> Delete Author</a>
+            <a href="javascript:void(0);" onclick="searchAuthorByID()"> Search Author By ID</a>
+            <a href="javascript:void(0);" onclick="searchAuthorByName()"> Search Author By Name</a>
+			<a href="javascript:void(0);" onclick="searchAuthorBySkillsets()"> Search Author By Skillsets</a>
+            <a href="javascript:void(0);" onclick="searchAuthorByYear()"> Search Author By Year</a>
         </div>
     </div>
     
@@ -544,40 +556,178 @@
 		</c:if> 
 		
 		<!-- Employee module ends --> 
+		
+		   <!-------------------- AUTHOR MODULE STARTS --------------->
+
+          <div id="add-author-form-section" class="form-container">
+		    <h3>Add Author</h3>
+		    <form:form modelAttribute="authorForm" method="post" action="${pageContext.request.contextPath}/author/save">
+		        <form:label path="id">ID:</form:label>
+		        <form:input path="id" readonly="true" />
+		        <br /><br />
+		        <form:label path="name">Name:</form:label>
+		        <form:input path="name" required="true" />
+		        <br /><br />
+		        <form:label path="skillsets">Skillsets:</form:label>
+		        <form:input path="skillsets" required="true" />
+		        <br /><br />
+		        <form:label path="year">Year:</form:label>
+		        <form:input path="year" type="number" required="true" />
+		        <br /><br />
+		        <input type="submit" value="Submit" />
+		    </form:form>
+			</div>
+			
+			<c:if test="${not empty addedAuthor}">
+		    <div id="add-author-form-result-section" class="added-record">
+		        <h3>Author Added Successfully!</h3>
+		        <p><strong>ID:</strong> ${addedAuthor.id}</p>
+		        <p><strong>Name:</strong> ${addedAuthor.name}</p>
+		        <p><strong>Skillsets:</strong> ${addedAuthor.skillsets}</p>
+		        <p><strong>Year:</strong> ${addedAuthor.year}</p>
+		    </div>
+		</c:if>
+			 <div id="search-author-by-id-section" class="form-container" style="display: none;">
+	            <h3>Search Author By Id</h3>
+	            <form action="${pageContext.request.contextPath}/author/find/by/id" method="get">
+	                <label for="id">Enter Author Id:</label>
+	                <input type="text" id="id" name="id" required />
+	                <input type="submit" value="Search" />
+	            </form>
+	        </div>
+	        <c:if test="${not empty foundAuthor}">
+		    <div id="search-author-by-id-result-section" class="grid-section" >
+		        <h3>Author Found</h3>
+		        <table border="1" cellpadding="10" cellspacing="0">
+		            <tr>
+		                <th>ID</th>
+		                <th>Name</th>
+		                <th>Skillsets</th>
+		                <th>Year</th>
+		            </tr>
+		            <tr>
+		                <td>${foundAuthor.id}</td>
+		                <td>${foundAuthor.name}</td>
+		                <td>${foundAuthor.skillsets}</td>
+		                <td>${foundAuthor.year}</td>
+		            </tr>
+		        </table>
+		    </div>
+		</c:if>
+	        <div id="update-author-form-section" class="form-container" style="display: none;">
+		    <h3>Update Author</h3>
+		    <form:form modelAttribute="authorForm" method="post" action="${pageContext.request.contextPath}/author/update">
+		        <form:label path="id">ID:</form:label>
+		        <form:input path="id" required="true"/>
+		        <br /><br />
+		        <form:label path="name">Name:</form:label>
+		        <form:input path="name" required="true" />
+		        <br /><br />
+		        <form:label path="skillsets">Skillsets:</form:label>
+		        <form:input path="skillsets" required="true" />
+		        <br /><br />
+		        <form:label path="year">Year:</form:label>
+		        <form:input path="year" type="number" required="true" />
+		        <br /><br />
+		        <input type="submit" value="Update" />
+		    </form:form>
+		</div>
+		 <div id="delete-author-form-section" class="form-container" style="display: none;">
+            <h3>Delete Author</h3>
+            <form action="${pageContext.request.contextPath}/author/delete" method="post">
+                <label for="deleteId">Enter Author ID to Delete:</label>
+                <input type="text" id="deleteId" name="id" required />
+                <input type="submit" value="Delete" />
+            </form>
+        </div>
+        <div id="search-author-by-name-section" class="form-container" style="display: none;">
+		    <h3>Search Author By Name</h3>
+		    <form action="${pageContext.request.contextPath}/author/find/by/name" method="get">
+		        <label for="name">Enter Author Name:</label>
+		        <input type="text" id="name" name="name" required />
+		        <input type="submit" value="Search" />
+		    </form>
+		</div>
+		<c:if test="${not empty authorByName}">
+		    <div id="search-author-by-name-result-section" class="grid-section">
+		        <h3>Matching Author</h3>
+		        <table border="1" cellpadding="10" cellspacing="0">
+		            <tr>
+		                <th>ID</th>
+		                <th>Name</th>
+		                <th>Skillsets</th>
+		                <th>Year</th>
+		            </tr>
+		            <c:forEach var="author" items="${authorByName}">
+		                <tr>
+		                    <td>${author.id}</td>
+		                    <td>${author.name}</td>
+		                    <td>${author.skillsets}</td>
+		                    <td>${author.year}</td>
+		                </tr>
+		            </c:forEach>
+		        </table>
+		    </div>
+		</c:if>
+		<div id="search-author-by-skillsets-section" class="form-container" style="display: none;">
+		    <h3>Search Author By Skillsets</h3>
+		    <form action="${pageContext.request.contextPath}/author/find/by/skillsets" method="get">
+		        <label for="skillsets">Enter Skillsets:</label>
+		        <input type="text" id="skillsets" name="skillsets" required />
+		        <input type="submit" value="Search" />
+		    </form>
+		</div>
+		<c:if test="${not empty authorBySkillsets}">
+		    <div id="search-author-by-skillsets-result-section" class="grid-section">
+		        <h3>Matching Author (By Skillsets)</h3>
+		        <table border="1" cellpadding="10" cellspacing="0">
+		            <tr>
+		                <th>ID</th>
+		                <th>Name</th>
+		                <th>Skillsets</th>
+		                <th>Year</th>
+		            </tr>
+		            <c:forEach var="author" items="${authorBySkillsets}">
+		                <tr>
+		                    <td>${author.id}</td>
+		                    <td>${author.name}</td>
+		                    <td>${author.skillsets}</td>
+		                    <td>${author.year}</td>
+		               </tr>
+		            </c:forEach>
+		        </table>
+		    </div>
+		</c:if>
+		 <div id="search-author-by-year-section" class="form-container" style="display: none;">
+		    <h3>Search Author By Year</h3>
+		    <form action="${pageContext.request.contextPath}/author/find/by/year" method="get">
+		        <label for="year">Enter Year:</label>
+		        <input type="number" id="year" name="year" required />
+		        <input type="submit" value="Search" />
+		    </form>
+		</div>
+		<c:if test="${not empty authorByYear}">
+		    <div id="search-author-by-year-result-section" class="grid-section">
+		        <h3>Matching Author (By Year)</h3>
+		        <table border="1" cellpadding="10" cellspacing="0">
+		            <tr>
+		                <th>ID</th>
+		                <th>Name</th>
+		                <th>Skillsets</th>
+		                <th>Year</th>
+		            </tr>
+		            <c:forEach var="author" items="${authorByYear}">
+		                <tr>
+		                    <td>${author.id}</td>
+		                    <td>${author.name}</td>
+		                    <td>${author.skillsets}</td>
+		                    <td>${author.year}</td>
+		                </tr>
+		            </c:forEach>
+		        </table>
+		    </div>
+		</c:if>
     </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </body>
 </html>
