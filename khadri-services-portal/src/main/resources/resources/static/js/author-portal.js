@@ -25,7 +25,7 @@ function searchAuthorByName() {
 
 function searchAuthorBySkillsets() {
 	hideAllForms();
-	document.getElementById("search-author-by-Skillsets-section").style.display = "block";
+	document.getElementById("search-author-by-skillsets-section").style.display = "block";
 }
  
 function searchAuthorByYear() {

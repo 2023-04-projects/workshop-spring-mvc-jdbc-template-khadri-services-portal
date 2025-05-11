@@ -258,18 +258,46 @@
 		        <input type="submit" value="Submit" />
 		    </form:form>
 			</div>
+			
+			<c:if test="${not empty addedCustomer}">
+		    <div id="add-customer-form-result-section" class="added-record">
+		        <h3>Customer Added Successfully!</h3>
+		        <p><strong>ID:</strong> ${addedCustomer.id}</p>
+		        <p><strong>Name:</strong> ${addedCustomer.name}</p>
+		        <p><strong>Address:</strong> ${addedCustomer.address}</p>
+		        <p><strong>PhoneNumber:</strong> ${addedCustomer.phoneNumber}</p>
+		    </div>
+		</c:if>
 			 <div id="search-customer-by-id-section" class="form-container" style="display: none;">
 	            <h3>Search Customer By Id</h3>
-	            <form action="${pageContext.request.contextPath}/find/by/id" method="get">
+	            <form action="${pageContext.request.contextPath}/customer/find/by/id" method="get">
 	                <label for="id">Enter Customer Id:</label>
 	                <input type="text" id="id" name="id" required />
 	                <input type="submit" value="Search" />
 	            </form>
 	        </div>
-	        
+	        <c:if test="${not empty foundCustomer}">
+		    <div id="search-customer-by-id-result-section" class="grid-section" >
+		        <h3>Customer Found</h3>
+		        <table border="1" cellpadding="10" cellspacing="0">
+		            <tr>
+		                <th>ID</th>
+		                <th>Name</th>
+		                <th>Address</th>
+		                <th>PhoneNumber</th>
+		            </tr>
+		            <tr>
+		                <td>${foundCustomer.id}</td>
+		                <td>${foundCustomer.name}</td>
+		                <td>${foundCustomer.address}</td>
+		                <td>${foundCustomer.phoneNumber}</td>
+		            </tr>
+		        </table>
+		    </div>
+		</c:if>
 	        <div id="update-customer-form-section" class="form-container" style="display: none;">
 		    <h3>Update Customer</h3>
-		    <form:form modelAttribute="customerForm" method="post" action="${pageContext.request.contextPath}/update">
+		    <form:form modelAttribute="customerForm" method="post" action="${pageContext.request.contextPath}/customer/update">
 		        <form:label path="id">ID:</form:label>
 		        <form:input path="id" required="true"/>
 		        <br /><br />
@@ -287,7 +315,7 @@
 		</div>
 		 <div id="delete-customer-form-section" class="form-container" style="display: none;">
             <h3>Delete Customer</h3>
-            <form action="${pageContext.request.contextPath}/delete" method="post">
+            <form action="${pageContext.request.contextPath}/customer/delete" method="post">
                 <label for="deleteId">Enter Customer ID to Delete:</label>
                 <input type="text" id="deleteId" name="id" required />
                 <input type="submit" value="Delete" />
@@ -295,33 +323,74 @@
         </div>
         <div id="search-customer-by-name-section" class="form-container" style="display: none;">
 		    <h3>Search Customer By Name</h3>
-		    <form action="${pageContext.request.contextPath}/find/by/name" method="get">
+		    <form action="${pageContext.request.contextPath}/customer/find/by/name" method="get">
 		        <label for="name">Enter Customer Name:</label>
 		        <input type="text" id="name" name="name" required />
 		        <input type="submit" value="Search" />
 		    </form>
 		</div>
+		<c:if test="${not empty customerByName}">
+		    <div id="search-customer-by-name-result-section" class="grid-section">
+		        <h3>Matching Customer</h3>
+		        <table border="1" cellpadding="10" cellspacing="0">
+		            <tr>
+		                <th>ID</th>
+		                <th>Name</th>
+		                <th>Address</th>
+		                <th>PhoneNumber</th>
+		            </tr>
+		            <c:forEach var="customer" items="${customerByName}">
+		                <tr>
+		                    <td>${customer.id}</td>
+		                    <td>${customer.name}</td>
+		                    <td>${customer.address}</td>
+		                    <td>${customer.phoneNumber}</td>
+		                </tr>
+		            </c:forEach>
+		        </table>
+		    </div>
+		</c:if>
 		<div id="search-customer-by-address-section" class="form-container" style="display: none;">
 		    <h3>Search Customer By Address</h3>
-		    <form action="${pageContext.request.contextPath}/find/by/course" method="get">
+		    <form action="${pageContext.request.contextPath}/customer/find/by/address" method="get">
 		        <label for="course">Enter Address Name:</label>
 		        <input type="text" id="address" name="address" required />
 		        <input type="submit" value="Search" />
 		    </form>
 		</div>
-		
+		<c:if test="${not empty customerByAddress}">
+		    <div id="search-customer-by-address-result-section" class="grid-section">
+		        <h3>Matching Customer (By Address)</h3>
+		        <table border="1" cellpadding="10" cellspacing="0">
+		            <tr>
+		                <th>ID</th>
+		                <th>Name</th>
+		                <th>Address</th>
+		                <th>PhoneNumber</th>
+		            </tr>
+		            <c:forEach var="customer" items="${customerByAddress}">
+		                <tr>
+		                    <td>${customer.id}</td>
+		                    <td>${customer.name}</td>
+		                    <td>${customer.address}</td>
+		                    <td>${customer.phoneNumber}</td>
+		                </tr>
+		            </c:forEach>
+		        </table>
+		    </div>
+		</c:if>
 		 <div id="search-customer-by-phone-number-section" class="form-container" style="display: none;">
 		    <h3>Search Customer By Phone Number</h3>
-		    <form action="${pageContext.request.contextPath}/find/by/marks" method="get">
-		        <label for="marks">Enter Phone Number:</label>
+		    <form action="${pageContext.request.contextPath}/customer/find/by/phoneNumber" method="get">
+		        <label for="phoneNumber">Enter Phone Number:</label>
 		        <input type="number" id="phoneNumber" name="phoneNumber" required />
 		        <input type="submit" value="Search" />
 		    </form>
 		</div>
 
+                   <!-------------------- AUTHOR MODULE STARTS --------------->
 
-       <!-------------------- AUTHOR MODULE STARTS --------------->
-   <div id="add-author-form-section" class="form-container">
+          <div id="add-author-form-section" class="form-container">
 		    <h3>Add Author</h3>
 		    <form:form modelAttribute="authorForm" method="post" action="${pageContext.request.contextPath}/author/save">
 		        <form:label path="id">ID:</form:label>
@@ -334,20 +403,48 @@
 		        <form:input path="skillsets" required="true" />
 		        <br /><br />
 		        <form:label path="year">Year:</form:label>
-		        <form:input path="year"  type="number" required="true" />
+		        <form:input path="year" type="number" required="true" />
 		        <br /><br />
 		        <input type="submit" value="Submit" />
 		    </form:form>
 			</div>
+			
+			<c:if test="${not empty addedAuthor}">
+		    <div id="add-author-form-result-section" class="added-record">
+		        <h3>Author Added Successfully!</h3>
+		        <p><strong>ID:</strong> ${addedAuthor.id}</p>
+		        <p><strong>Name:</strong> ${addedAuthor.name}</p>
+		        <p><strong>Skillsets:</strong> ${addedAuthor.skillsets}</p>
+		        <p><strong>Year:</strong> ${addedAuthor.year}</p>
+		    </div>
+		</c:if>
 			 <div id="search-author-by-id-section" class="form-container" style="display: none;">
 	            <h3>Search Author By Id</h3>
-	            <form action="${pageContext.request.contextPath}/find/by/id" method="get">
+	            <form action="${pageContext.request.contextPath}/author/find/by/id" method="get">
 	                <label for="id">Enter Author Id:</label>
 	                <input type="text" id="id" name="id" required />
 	                <input type="submit" value="Search" />
 	            </form>
 	        </div>
-	        
+	        <c:if test="${not empty foundAuthor}">
+		    <div id="search-author-by-id-result-section" class="grid-section" >
+		        <h3>Author Found</h3>
+		        <table border="1" cellpadding="10" cellspacing="0">
+		            <tr>
+		                <th>ID</th>
+		                <th>Name</th>
+		                <th>Skillsets</th>
+		                <th>Year</th>
+		            </tr>
+		            <tr>
+		                <td>${foundAuthor.id}</td>
+		                <td>${foundAuthor.name}</td>
+		                <td>${foundAuthor.skillsets}</td>
+		                <td>${foundAuthor.year}</td>
+		            </tr>
+		        </table>
+		    </div>
+		</c:if>
 	        <div id="update-author-form-section" class="form-container" style="display: none;">
 		    <h3>Update Author</h3>
 		    <form:form modelAttribute="authorForm" method="post" action="${pageContext.request.contextPath}/author/update">
@@ -357,8 +454,8 @@
 		        <form:label path="name">Name:</form:label>
 		        <form:input path="name" required="true" />
 		        <br /><br />
-		        <form:label path="Skillsets">Skillsets:</form:label>
-		        <form:input path="Skillsets" type="text" required="true" />
+		        <form:label path="skillsets">Skillsets:</form:label>
+		        <form:input path="skillsets" required="true" />
 		        <br /><br />
 		        <form:label path="year">Year:</form:label>
 		        <form:input path="year" type="number" required="true" />
@@ -382,17 +479,57 @@
 		        <input type="submit" value="Search" />
 		    </form>
 		</div>
-		
-		 <div id="search-author-by-skillsets-section" class="form-container" style="display: none;">
+		<c:if test="${not empty authorByName}">
+		    <div id="search-author-by-name-result-section" class="grid-section">
+		        <h3>Matching Author</h3>
+		        <table border="1" cellpadding="10" cellspacing="0">
+		            <tr>
+		                <th>ID</th>
+		                <th>Name</th>
+		                <th>Skillsets</th>
+		                <th>Year</th>
+		            </tr>
+		            <c:forEach var="author" items="${authorByName}">
+		                <tr>
+		                    <td>${author.id}</td>
+		                    <td>${author.name}</td>
+		                    <td>${author.skillsets}</td>
+		                    <td>${author.year}</td>
+		                </tr>
+		            </c:forEach>
+		        </table>
+		    </div>
+		</c:if>
+		<div id="search-author-by-skillsets-section" class="form-container" style="display: none;">
 		    <h3>Search Author By Skillsets</h3>
-		    <form action="${pageContext.request.contextPath}/authorfind/by/skilsets" method="get">
+		    <form action="${pageContext.request.contextPath}/author/find/by/skillsets" method="get">
 		        <label for="skillsets">Enter Skillsets:</label>
-		        <input type="text" id="skilsets" name="skillsets" required />
+		        <input type="text" id="skillsets" name="skillsets" required />
 		        <input type="submit" value="Search" />
 		    </form>
 		</div>
-
-           <div id="search-author-by-year-section" class="form-container" style="display: none;">
+		<c:if test="${not empty authorBySkillsets}">
+		    <div id="search-author-by-skillsets-result-section" class="grid-section">
+		        <h3>Matching Author (By Skillsets)</h3>
+		        <table border="1" cellpadding="10" cellspacing="0">
+		            <tr>
+		                <th>ID</th>
+		                <th>Name</th>
+		                <th>Skillsets</th>
+		                <th>Year</th>
+		            </tr>
+		            <c:forEach var="author" items="${authorBySkillsets}">
+		                <tr>
+		                    <td>${author.id}</td>
+		                    <td>${author.name}</td>
+		                    <td>${author.skillsets}</td>
+		                    <td>${author.year}</td>
+		               </tr>
+		            </c:forEach>
+		        </table>
+		    </div>
+		</c:if>
+		 <div id="search-author-by-year-section" class="form-container" style="display: none;">
 		    <h3>Search Author By Year</h3>
 		    <form action="${pageContext.request.contextPath}/author/find/by/year" method="get">
 		        <label for="year">Enter Year:</label>
@@ -400,8 +537,27 @@
 		        <input type="submit" value="Search" />
 		    </form>
 		</div>
-		 
-		       <!-------------------- AUTHOR MODULE ENDS --------------->
+		<c:if test="${not empty authorByYear}">
+		    <div id="search-author-by-year-result-section" class="grid-section">
+		        <h3>Matching Author (By Year)</h3>
+		        <table border="1" cellpadding="10" cellspacing="0">
+		            <tr>
+		                <th>ID</th>
+		                <th>Name</th>
+		                <th>Skillsets</th>
+		                <th>Year</th>
+		            </tr>
+		            <c:forEach var="author" items="${authorByYear}">
+		                <tr>
+		                    <td>${author.id}</td>
+		                    <td>${author.name}</td>
+		                    <td>${author.skillsets}</td>
+		                    <td>${author.year}</td>
+		                </tr>
+		            </c:forEach>
+		        </table>
+		    </div>
+		</c:if>
     </div>
 </div>
 </body>

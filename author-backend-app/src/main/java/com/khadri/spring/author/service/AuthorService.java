@@ -2,7 +2,6 @@
 package com.khadri.spring.author.service;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,16 +27,12 @@ public class AuthorService {
 		return authorDao.update(author);
 	}
 
-	public AuthorForm update(int id, Map<String, Object> updates) {
-		return authorDao.partialUpdate(id, updates);
+	public AuthorForm findById(int id) {
+		return authorDao.findById(id);
 	}
 
 	public void delete(int id) {
 		authorDao.delete(id);
-	}
-
-	public AuthorForm findById(int id) {
-		return authorDao.findById(id);
 	}
 
 	public List<AuthorForm> findByName(String name) {

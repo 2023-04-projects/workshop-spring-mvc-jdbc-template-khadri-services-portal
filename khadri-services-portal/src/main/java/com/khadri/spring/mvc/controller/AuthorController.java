@@ -28,17 +28,8 @@ public class AuthorController {
 		this.authorService = authorService;
 	}
 
-	// Show main portal page with empty form model
-	@GetMapping("/")
-	public String showPortal(Model model) {
-		model.addAttribute("studentForm", new StudentForm());
-		model.addAttribute("customerForm", new CustomerForm());
-		model.addAttribute("authorForm", new AuthorForm());
-		return "khadri-services-portal"; // your JSP page name
-	}
-
 	// Save a new student
-	@PostMapping("/author/save")
+	@PostMapping("/save")
 	public String saveAuthor(@ModelAttribute("authorForm") AuthorForm author, RedirectAttributes redirectAttributes) {
 		AuthorForm addedAuthor = authorService.save(author);
 		redirectAttributes.addFlashAttribute("addedAuthor", addedAuthor);
@@ -46,52 +37,64 @@ public class AuthorController {
 	}
 
 	// Update existing student
-	@PostMapping("/author/update")
+	@PostMapping("/update")
 	public String updateAuthor(@ModelAttribute("authorForm") AuthorForm author, Model model) {
 		authorService.update(author);
 		model.addAttribute("authorForm", new AuthorForm()); // reset form
+		model.addAttribute("customerForm", new CustomerForm()); // reset form
+		model.addAttribute("studentForm", new StudentForm()); // reset form
 		return "khadri-services-portal";
 	}
 
 	// Delete student by ID
-	@PostMapping("/author/delete")
+	@PostMapping("/delete")
 	public String deleteAuthor(@RequestParam("id") int id, Model model) {
 		authorService.delete(id);
 		model.addAttribute("authorForm", new AuthorForm());
+		model.addAttribute("customerForm", new CustomerForm()); // reset form
+		model.addAttribute("studentForm", new StudentForm()); // reset form
 		return "khadri-services-portal";
 	}
 
 	// Search student by ID
-	@GetMapping("/author/find/by/id")
+	@GetMapping("/find/by/id")
 	public String searchById(@RequestParam("id") int id, Model model) {
 		System.out.println("Entered into AuthorController:searchById");
 		AuthorForm found = authorService.findById(id);
 		model.addAttribute("foundAuthor", found);
 		model.addAttribute("authorForm", new AuthorForm());
+		model.addAttribute("customerForm", new CustomerForm()); // reset form
+		model.addAttribute("studentForm", new StudentForm()); // reset form
 		return "khadri-services-portal";
 	}
 
-	@GetMapping("/author/find/by/name")
+	@GetMapping("/find/by/name")
 	public String searchByName(@RequestParam("name") String name, Model model) {
 		List<AuthorForm> authors = authorService.findByName(name);
-		model.addAttribute("authorsByName", authors);
+		model.addAttribute("authorByName", authors);
 		model.addAttribute("authorForm", new AuthorForm()); // Keep form model ready
+		model.addAttribute("customerForm", new CustomerForm()); // reset form
+		model.addAttribute("studentForm", new StudentForm()); // reset form
 		return "khadri-services-portal";
 	}
 
-	@GetMapping("/author/find/by/skillsets")
+	@GetMapping("/find/by/skillsets")
 	public String searchBySkillsets(@RequestParam("skillsets") String skillsets, Model model) {
 		List<AuthorForm> authors = authorService.findBySkillsets(skillsets);
-		model.addAttribute("authorsBySkillsets", authors);
+		model.addAttribute("authorBySkillsets", authors);
 		model.addAttribute("authorForm", new AuthorForm());
+		model.addAttribute("customerForm", new CustomerForm()); // reset form
+		model.addAttribute("studentForm", new StudentForm()); // reset form
 		return "khadri-services-portal";
 	}
 
-	@GetMapping("/author/find/by/year")
+	@GetMapping("/find/by/year")
 	public String searchByYear(@RequestParam("year") int year, Model model) {
 		List<AuthorForm> authors = authorService.findByYear(year);
-		model.addAttribute("authorsByYear", authors);
+		model.addAttribute("authorByYear", authors);
 		model.addAttribute("authorForm", new AuthorForm());
+		model.addAttribute("customerForm", new CustomerForm()); // reset form
+		model.addAttribute("studentForm", new StudentForm()); // reset form
 		return "khadri-services-portal";
 	}
 
