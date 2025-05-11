@@ -4,3 +4,10 @@ CREATE TABLE Student (
     course VARCHAR(100) NOT NULL,
     marks INT NOT NULL
 );
+
+CREATE TABLE task (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  priority VARCHAR(100),
+  status VARCHAR(100),
+  cost DECIMAL(10, 2)
+);
