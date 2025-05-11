@@ -1,3 +1,4 @@
+
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -310,21 +311,58 @@
 					<input type="submit" value="Submit" />
 				</form:form>
 			</div>
+
+			<c:if test="${not empty addedCustomer}">
+				<div id="add-customer-form-result-section" class="added-record">
+					<h3>Customer Added Successfully!</h3>
+					<p>
+						<strong>ID:</strong> ${addedCustomer.id}
+					</p>
+					<p>
+						<strong>Name:</strong> ${addedCustomer.name}
+					</p>
+					<p>
+						<strong>Address:</strong> ${addedCustomer.address}
+					</p>
+					<p>
+						<strong>PhoneNumber:</strong> ${addedCustomer.phoneNumber}
+					</p>
+				</div>
+			</c:if>
 			<div id="search-customer-by-id-section" class="form-container"
 				style="display: none;">
 				<h3>Search Customer By Id</h3>
-				<form action="${pageContext.request.contextPath}/find/by/id"
+				<form
+					action="${pageContext.request.contextPath}/customer/find/by/id"
 					method="get">
 					<label for="id">Enter Customer Id:</label> <input type="text"
 						id="id" name="id" required /> <input type="submit" value="Search" />
 				</form>
 			</div>
-
+			<c:if test="${not empty foundCustomer}">
+				<div id="search-customer-by-id-result-section" class="grid-section">
+					<h3>Customer Found</h3>
+					<table border="1" cellpadding="10" cellspacing="0">
+						<tr>
+							<th>ID</th>
+							<th>Name</th>
+							<th>Address</th>
+							<th>PhoneNumber</th>
+						</tr>
+						<tr>
+							<td>${foundCustomer.id}</td>
+							<td>${foundCustomer.name}</td>
+							<td>${foundCustomer.address}</td>
+							<td>${foundCustomer.phoneNumber}</td>
+						</tr>
+					</table>
+				</div>
+			</c:if>
 			<div id="update-customer-form-section" class="form-container"
 				style="display: none;">
 				<h3>Update Customer</h3>
 				<form:form modelAttribute="customerForm" method="post"
-					action="${pageContext.request.contextPath}/update">
+					action="${pageContext.request.contextPath}/customer/update">
 					<form:label path="id">ID:</form:label>
 					<form:input path="id" required="true" />
 					<br />
@@ -347,7 +385,7 @@
 			<div id="delete-customer-form-section" class="form-container"
 				style="display: none;">
 				<h3>Delete Customer</h3>
-				<form action="${pageContext.request.contextPath}/delete"
+				<form action="${pageContext.request.contextPath}/customer/delete"
 					method="post">
 					<label for="deleteId">Enter Customer ID to Delete:</label> <input
 						type="text" id="deleteId" name="id" required /> <input
@@ -357,179 +395,110 @@
 			<div id="search-customer-by-name-section" class="form-container"
 				style="display: none;">
 				<h3>Search Customer By Name</h3>
-				<form action="${pageContext.request.contextPath}/find/by/name"
+				<form
+					action="${pageContext.request.contextPath}/customer/find/by/name"
 					method="get">
 					<label for="name">Enter Customer Name:</label> <input type="text"
 						id="name" name="name" required /> <input type="submit"
 						value="Search" />
 				</form>
 			</div>
+			<c:if test="${not empty customerByName}">
+				<div id="search-customer-by-name-result-section"
+					class="grid-section">
+					<h3>Matching Customer</h3>
+					<table border="1" cellpadding="10" cellspacing="0">
+						<tr>
+							<th>ID</th>
+							<th>Name</th>
+							<th>Address</th>
+							<th>PhoneNumber</th>
+						</tr>
+						<c:forEach var="customer" items="${customerByName}">
+							<tr>
+								<td>${customer.id}</td>
+								<td>${customer.name}</td>
+								<td>${customer.address}</td>
+								<td>${customer.phoneNumber}</td>
+							</tr>
+						</c:forEach>
+					</table>
+				</div>
+			</c:if>
 			<div id="search-customer-by-address-section" class="form-container"
 				style="display: none;">
 				<h3>Search Customer By Address</h3>
-				<form action="${pageContext.request.contextPath}/find/by/course"
+				<form
+					action="${pageContext.request.contextPath}/customer/find/by/address"
 					method="get">
 					<label for="course">Enter Address Name:</label> <input type="text"
 						id="address" name="address" required /> <input type="submit"
 						value="Search" />
 				</form>
 			</div>
-
+			<c:if test="${not empty customerByAddress}">
+				<div id="search-customer-by-address-result-section"
+					class="grid-section">
+					<h3>Matching Customer (By Address)</h3>
+					<table border="1" cellpadding="10" cellspacing="0">
+						<tr>
+							<th>ID</th>
+							<th>Name</th>
+							<th>Address</th>
+							<th>PhoneNumber</th>
+						</tr>
+						<c:forEach var="customer" items="${customerByAddress}">
+							<tr>
+								<td>${customer.id}</td>
+								<td>${customer.name}</td>
+								<td>${customer.address}</td>
+								<td>${customer.phoneNumber}</td>
+							</tr>
+						</c:forEach>
+					</table>
+				</div>
+			</c:if>
 			<div id="search-customer-by-phone-number-section"
 				class="form-container" style="display: none;">
 				<h3>Search Customer By Phone Number</h3>
-				<form action="${pageContext.request.contextPath}/find/by/marks"
+				<form
+					action="${pageContext.request.contextPath}/customer/find/by/phoneNumber"
 					method="get">
-					<label for="marks">Enter Phone Number:</label> <input type="number"
-						id="phoneNumber" name="phoneNumber" required /> <input
+					<label for="phoneNumber">Enter Phone Number:</label> <input
+						type="number" id="phoneNumber" name="phoneNumber" required /> <input
 						type="submit" value="Search" />
 				</form>
 			</div>
 
-
-			<!-- Software module starts -->
-
-			<div id="search-software-by-id-section" class="form-container"
-				style="display: none;">
-				<h3>Search Software By Id</h3>
-				<form
-					action="${pageContext.request.contextPath}/software/find/by/id"
-					method="get">
-					<label for="id">Enter Software Id:</label> <input type="text"
-						id="id" name="id" required /> <input type="submit" value="Search" />
-				</form>
-			</div>
-
-			<c:if test="${not empty foundSoftware}">
-				<div id="search-software-by-id-result-section" class="grid-section">
-					<h3>Software Found</h3>
-					<table border="1" cellpadding="10" cellspacing="0">
-						<tr>
-							<th>ID</th>
-							<th>Name</th>
-							<th>Adderss</th>
-							<th>PhoneNumer</th>
-						</tr>
-						<tr>
-							<td>${foundSoftware.id}</td>
-							<td>${foundSoftware.name}</td>
-							<td>${foundSoftware.adderss}</td>
-							<td>${foundSoftware.phoneNumber}</td>
-						</tr>
-					</table>
-				</div>
-			</c:if>
-
-
-			<div id="search-software-by-name-section" class="form-container"
-				style="display: none;">
-				<h3>Search Software By Name</h3>
-				<form
-					action="${pageContext.request.contextPath}/software/find/by/name"
-					method="get">
-					<label for="name">Enter Software Name:</label> <input type="text"
-						id="name" name="name" required /> <input type="submit"
-						value="Search" />
-				</form>
-			</div>
-			<c:if test="${not empty softwaresByName}">
-				<div id="search-student-by-name-result-section" class="grid-section">
-					<h3>Matching Softwares</h3>
-					<table border="1" cellpadding="10" cellspacing="0">
-						<tr>
-							<th>ID</th>
-							<th>Name</th>
-							<th>Adderss</th>
-							<th>PhoneNumber</th>
-						</tr>
-						<c:forEach var="software" items="${softwaresByName}">
-							<tr>
-								<td>${software.id}</td>
-								<td>${software.name}</td>
-								<td>${software.adderss}</td>
-								<td>${software.phoneNumber}</td>
-							</tr>
-						</c:forEach>
-					</table>
-				</div>
-			</c:if>
-
-			<!-- Search by Adderss -->
-			<div id="search-software-by-course-section" class="form-container"
-				style="display: none;">
-				<h3>Search Software By Adderss</h3>
-				<form
-					action="${pageContext.request.contextPath}/software/find/by/course"
-					method="get">
-					<label for="course">Enter Adderss Name:</label> <input type="text"
-						id="course" name="course" required /> <input type="submit"
-						value="Search" />
-				</form>
-			</div>
-
-			<c:if test="${not empty softwaresByAdderss}">
-				<div id="search-software-by-adderss-result-section"
+			<c:if test="${not empty customerByPhoneNumber}">
+				<div id="search-customer-by-phone-number-result-section"
 					class="grid-section">
-					<h3>Matching Softwares (By Course)</h3>
+					<h3>Matching Customer (By PhoneNumber)</h3>
 					<table border="1" cellpadding="10" cellspacing="0">
 						<tr>
 							<th>ID</th>
 							<th>Name</th>
-							<th>Adderss</th>
+							<th>Address</th>
 							<th>PhoneNumber</th>
 						</tr>
-						<c:forEach var="c" items="${softwaresByCourse}">
+						<c:forEach var="customer" items="${customerByPhoneNumber}">
 							<tr>
-								<td>${software.id}</td>
-								<td>${software.name}</td>
-								<td>${software.adderss}</td>
-								<td>${software.phoneNumber}</td>
+								<td>${customer.id}</td>
+								<td>${customer.name}</td>
+								<td>${customer.address}</td>
+								<td>${customer.phoneNumber}</td>
 							</tr>
 						</c:forEach>
 					</table>
 				</div>
 			</c:if>
 
-			<!-- Search by PhoneNumber -->
-			<div id="search-software-by-phoneNumber-section"
-				class="form-container" style="display: none;">
-				<h3>Search Software By phoneNumber</h3>
-				<form
-					action="${pageContext.request.contextPath}/student/find/by/marks"
-					method="get">
-					<label for="marks">Enter PhoneNumber:</label> <input type="number"
-						id="marks" name="marks" required /> <input type="submit"
-						value="Search" />
-				</form>
-			</div>
-
-			<c:if test="${not empty studentsByMarks}">
-				<div id="search-student-by-marks-result-section"
-					class="grid-section">
-					<h3>Matching Students (By Marks)</h3>
-					<table border="1" cellpadding="10" cellspacing="0">
-						<tr>
-							<th>ID</th>
-							<th>Name</th>
-							<th>Adderss</th>
-							<th>PhoneNumber</th>
-						</tr>
-						<c:forEach var="software" items="${studentsByMarks}">
-							<tr>
-								<td>${software.id}</td>
-								<td>${software.name}</td>
-								<td>${software.adderss}</td>
-								<td>${software.phoneNumber}</td>
-							</tr>
-						</c:forEach>
-					</table>
-				</div>
-			</c:if>
+			<!-- Software Module Starts -->
 
 			<div id="add-software-form-section" class="form-container">
-				<h3>Add Student</h3>
+				<h3>Add Sofware</h3>
 				<form:form modelAttribute="softwareForm" method="post"
-					action="${pageContext.request.contextPath}/student/save">
+					action="${pageContext.request.contextPath}/software/save">
 					<form:label path="id">ID:</form:label>
 					<form:input path="id" readonly="true" />
 					<br />
@@ -538,54 +507,16 @@
 					<form:input path="name" required="true" />
 					<br />
 					<br />
-					<form:label path="adderss">Adderss:</form:label>
-					<form:input path="adderss" required="true" />
+					<form:label path="address">Address:</form:label>
+					<form:input path="address" required="true" />
 					<br />
 					<br />
-					<form:label path="adderss">Adderss:</form:label>
-					<form:input path="adderss" type="number" required="true" />
+					<form:label path="phoneNumber">PhoneNumber:</form:label>
+					<form:input path="phoneNumber" type="number" required="true" />
 					<br />
 					<br />
 					<input type="submit" value="Submit" />
 				</form:form>
-			</div>
-
-
-			<div id="update-software-form-section" class="form-container"
-				style="display: none;">
-				<h3>Update Student</h3>
-				<form:form modelAttribute="softwareForm" method="post"
-					action="${pageContext.request.contextPath}/software/update">
-					<form:label path="id">ID:</form:label>
-					<form:input path="id" required="true" />
-					<br />
-					<br />
-					<form:label path="name">Name:</form:label>
-					<form:input path="name" required="true" />
-					<br />
-					<br />
-					<form:label path="adderss">Adderss:</form:label>
-					<form:input path="adderss" required="true" />
-					<br />
-					<br />
-					<form:label path="phoneNumber">Marks:</form:label>
-					<form:input path="PhoneNumber" type="number" required="true" />
-					<br />
-					<br />
-					<input type="submit" value="Update" />
-				</form:form>
-			</div>
-
-
-			<div id="delete-software-form-section" class="form-container"
-				style="display: none;">
-				<h3>Delete Software</h3>
-				<form action="${pageContext.request.contextPath}/student/delete"
-					method="post">
-					<label for="deleteId">Enter Software ID to Delete:</label> <input
-						type="text" id="deleteId" name="id" required /> <input
-						type="submit" value="Delete" />
-				</form>
 			</div>
 
 			<c:if test="${not empty addedSoftware}">
@@ -598,14 +529,177 @@
 						<strong>Name:</strong> ${addedSoftware.name}
 					</p>
 					<p>
-						<strong>Adderss:</strong> ${addedSoftware.adderss}
+						<strong>Address:</strong> ${addedSoftware.address}
 					</p>
 					<p>
 						<strong>PhoneNumber:</strong> ${addedSoftware.phoneNumber}
 					</p>
 				</div>
 			</c:if>
+			<div id="search-software-by-id-section" class="form-container"
+				style="display: none;">
+				<h3>Search Software By Id</h3>
+				<form
+					action="${pageContext.request.contextPath}/software/find/by/id"
+					method="get">
+					<label for="id">Enter Software Id:</label> <input type="text"
+						id="id" name="id" required /> <input type="submit" value="Search" />
+				</form>
+			</div>
+			<c:if test="${not empty foundSoftware}">
+				<div id="search-software-by-id-result-section" class="grid-section">
+					<h3>Software Found</h3>
+					<table border="1" cellpadding="10" cellspacing="0">
+						<tr>
+							<th>ID</th>
+							<th>Name</th>
+							<th>Address</th>
+							<th>PhoneNumber</th>
+						</tr>
+						<tr>
+							<td>${foundSoftware.id}</td>
+							<td>${foundSoftware.name}</td>
+							<td>${foundSoftware.address}</td>
+							<td>${foundSoftware.phoneNumber}</td>
+						</tr>
+					</table>
+				</div>
+			</c:if>
+			<div id="update-software-form-section" class="form-container"
+				style="display: none;">
+				<h3>Update Software</h3>
+				<form:form modelAttribute="softwareForm" method="post"
+					action="${pageContext.request.contextPath}/software/update">
 
+					<form:label path="id">ID:</form:label>
+					<form:input path="id" required="true" />
+					<br />
+					<br />
+					<form:label path="name">Name:</form:label>
+					<form:input path="name" required="true" />
+					<br />
+					<br />
+					<form:label path="address">Address:</form:label>
+					<form:input path="address" required="true" />
+					<br />
+					<br />
+					<form:label path="phoneNumber">Phone Number:</form:label>
+					<form:input path="phoneNumber" type="number" required="true" />
+					<br />
+					<br />
+					<input type="submit" value="Update" />
+				</form:form>
+			</div>
+			<div id="delete-software-form-section" class="form-container"
+				style="display: none;">
+				<h3>Delete Software</h3>
+				<form action="${pageContext.request.contextPath}/software/delete"
+					method="post">
+					<label for="deleteId">Enter Software ID to Delete:</label> <input
+						type="text" id="deleteId" name="id" required /> <input
+						type="submit" value="Delete" />
+				</form>
+			</div>
+			<div id="search-software-by-name-section" class="form-container"
+				style="display: none;">
+				<h3>Search Software By Name</h3>
+				<form
+					action="${pageContext.request.contextPath}/software/find/by/name"
+					method="get">
+					<label for="name">Enter Software Name:</label> <input type="text"
+						id="name" name="name" required /> <input type="submit"
+						value="Search" />
+				</form>
+			</div>
+			<c:if test="${not empty softwareByName}">
+				<div id="search-software-by-name-result-section"
+					class="grid-section">
+					<h3>Matching Software</h3>
+					<table border="1" cellpadding="10" cellspacing="0">
+						<tr>
+							<th>ID</th>
+							<th>Name</th>
+							<th>Address</th>
+							<th>PhoneNumber</th>
+						</tr>
+						<c:forEach var="software" items="${softwareByName}">
+							<tr>
+								<td>${software.id}</td>
+								<td>${software.name}</td>
+								<td>${software.address}</td>
+								<td>${software.phoneNumber}</td>
+							</tr>
+						</c:forEach>
+					</table>
+				</div>
+			</c:if>
+			<div id="search-software-by-address-section" class="form-container"
+				style="display: none;">
+				<h3>Search Software By Address</h3>
+				<form
+					action="${pageContext.request.contextPath}/software/find/by/address"
+					method="get">
+					<label for="course">Enter Address Name:</label> <input type="text"
+						id="address" name="address" required /> <input type="submit"
+						value="Search" />
+				</form>
+			</div>
+			<c:if test="${not empty softwareByAddress}">
+				<div id="search-software-by-address-result-section"
+					class="grid-section">
+					<h3>Matching Software (By Address)</h3>
+					<table border="1" cellpadding="10" cellspacing="0">
+						<tr>
+							<th>ID</th>
+							<th>Name</th>
+							<th>Address</th>
+							<th>PhoneNumber</th>
+						</tr>
+						<c:forEach var="software" items="${softwareByAddress}">
+							<tr>
+								<td>${software.id}</td>
+								<td>${software.name}</td>
+								<td>${software.address}</td>
+								<td>${software.phoneNumber}</td>
+							</tr>
+						</c:forEach>
+					</table>
+				</div>
+			</c:if>
+			<div id="search-software-by-phone-number-section"
+				class="form-container" style="display: none;">
+				<h3>Search Software By Phone Number</h3>
+				<form
+					action="${pageContext.request.contextPath}/software/find/by/phoneNumber"
+					method="get">
+					<label for="phoneNumber">Enter Phone Number:</label> <input
+						type="number" id="phoneNumber" name="phoneNumber" required /> <input
+						type="submit" value="Search" />
+				</form>
+			</div>
+
+			<c:if test="${not empty softwareByPhoneNumber}">
+				<div id="search-software-by-phone-number-result-section"
+					class="grid-section">
+					<h3>Matching Software (By PhoneNumber)</h3>
+					<table border="1" cellpadding="10" cellspacing="0">
+						<tr>
+							<th>ID</th>
+							<th>Name</th>
+							<th>Address</th>
+							<th>PhoneNumber</th>
+						</tr>
+						<c:forEach var="software" items="${softwareByPhoneNumber}">
+							<tr>
+								<td>${software.id}</td>
+								<td>${software.name}</td>
+								<td>${software.address}</td>
+								<td>${software.phoneNumber}</td>
+							</tr>
+						</c:forEach>
+					</table>
+				</div>
+			</c:if>
 		</div>
 	</div>
 

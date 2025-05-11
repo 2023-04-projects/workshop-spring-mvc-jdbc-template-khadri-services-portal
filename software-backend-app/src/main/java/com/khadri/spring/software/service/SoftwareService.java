@@ -1,5 +1,7 @@
 package com.khadri.spring.software.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -8,6 +10,7 @@ import com.khadri.spring.software.form.SoftwareForm;
 
 @Service
 public class SoftwareService {
+
 	private SoftwareDao softwareDao;
 
 	@Autowired
@@ -15,40 +18,31 @@ public class SoftwareService {
 		this.softwareDao = softwareDao;
 	}
 
-	public SoftwareForm save(SoftwareForm software) {
-		softwareDao.save(software);
-		return null;
+	public SoftwareForm save(SoftwareForm softwareForm) {
+		return softwareDao.save(softwareForm);
 	}
-	//
-//		public CustomerForm update(CustomerForm customer) {
-//			return customer;
-//			// TODO Auto-generated method stub
-//			
-//		}
-	//
-//		public void delete(int id) {
-//			// TODO Auto-generated method stub
-//			
-//		}
-	//
-//		public CustomerForm findById(int id) {
-//			// TODO Auto-generated method stub
-//			return null;
-//		}
-	//
-//		public List<CustomerForm> findByName(String name) {
-//			// TODO Auto-generated method stub
-//			return null;
-//		}
-	//
-//		public List<CustomerForm> findByAddress(String address) {
-//			// TODO Auto-generated method stub
-//			return null;
-//		}
-	//
-//		public List<CustomerForm> findByPhoneNumber(long phoneNumber) {
-//			// TODO Auto-generated method stub
-//			return null;
-//		}
 
+	public SoftwareForm update(SoftwareForm softwareForm) {
+		return softwareDao.update(softwareForm);
+	}
+
+	public SoftwareForm findById(int id) {
+		return softwareDao.findById(id);
+	}
+
+	public void delete(int id) {
+		softwareDao.delete(id);
+	}
+
+	public List<SoftwareForm> findByName(String name) {
+		return softwareDao.findByName(name);
+	}
+
+	public List<SoftwareForm> findByAddress(String address) {
+		return softwareDao.findByAddress(address);
+	}
+
+	public List<SoftwareForm> findByPhoneNumber(long phoneNumber) {
+		return softwareDao.findByPhoneNumber(phoneNumber);
+	}
 }
