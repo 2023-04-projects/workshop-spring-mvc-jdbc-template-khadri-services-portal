@@ -7,10 +7,10 @@
   <modules>
     <module>student-backend-app</module>
     <module>customer-backend-app</module>
-    <module>khadri-services-portal</module>
     <module>employee-backend-app</module>
     <module>author-backend-app</module>
     <module>software-backend-app</module>
+    <module>khadri-services-portal</module>
   </modules>
   <properties>
     <java.version>17</java.version>
