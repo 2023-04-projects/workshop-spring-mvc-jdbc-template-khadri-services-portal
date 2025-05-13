@@ -107,7 +107,11 @@
 			<groupId>com.khadri.spring.mvc</groupId>
 			<artifactId>software-backend-app</artifactId>
 			<version>1.0.0-SNAPSHOT</version>
-
+		</dependency>
+		<dependency>
+			<groupId>com.khadri.spring.mvc</groupId>
+			<artifactId>task-backend-app</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 

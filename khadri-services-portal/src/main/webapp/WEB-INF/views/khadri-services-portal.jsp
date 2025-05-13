@@ -3,85 +3,64 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Khadri Student Portal</title>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/student-portal.css" />
-<script
-	src="${pageContext.request.contextPath}/resources/student-portal.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/customer-portal.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/employee-portal.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/author-portal.js"></script>
-<script  
-	src = "${pageContext.request.contextPath}/resources/software-portal.js" >
-</script>
-<script src="${pageContext.request.contextPath}/resources/hide-divs.js"></script>
+
+    <title>Khadri Student Portal </title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/student-portal.css" />
+    <script src="${pageContext.request.contextPath}/resources/student-portal.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/customer-portal.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/employee-portal.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/author-portal.js"></script>
+        <script src="${pageContext.request.contextPath}/resources/software-portal.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/task-portal.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/hide-divs.js"></script>
 </head>
 <body>
-
 	<header> Khadri Student Portal </header>
 
-	<div class="container">
-		<div class="left-pane">
-			<h2>Student Services</h2>
-			<div class="nav-links">
-				<a href="javascript:void(0);" onclick="addStudent()"> Add
-					Student</a> <a href="javascript:void(0);" onclick="updateStudent()">
-					Update Student</a> <a href="javascript:void(0);"
-					onclick="deleteStudent()"> Delete Student</a> <a
-					href="javascript:void(0);" onclick="searchStudentByID()">
-					Search Student By ID</a> <a href="javascript:void(0);"
-					onclick="searchStudentByName()"> Search Student By Name</a> <a
-					href="javascript:void(0);" onclick="searchStudentByCourse()">
-					Search Student By Course</a> <a href="javascript:void(0);"
-					onclick="searchStudentByMarks()"> Search Student By Marks</a>
-			</div>
-
-
-			<h2>Customer Services</h2>
-			<div class="nav-links">
-				<a href="javascript:void(0);" onclick="addCustomer()"> Add
-					Customer</a> <a href="javascript:void(0);" onclick="updateCustomer()">
-					Update Customer</a> <a href="javascript:void(0);"
-					onclick="deleteCustomer()"> Delete Customer</a> <a
-					href="javascript:void(0);" onclick="searchCustomerByID()">
-					Search Customer By ID</a> <a href="javascript:void(0);"
-					onclick="searchCustomerByName()"> Search Customer By Name</a> <a
-					href="javascript:void(0);" onclick="searchCustomerByAddress()">
-					Search Customer By Address</a> <a href="javascript:void(0);"
-					onclick="searchCustomerByPhoneNumber()"> Search Customer By
-					Phone Number</a>
-			</div>
-
-			<h2>Employee Services</h2>
-			<div class="nav-links">
-				<a href="javascript:void(0);" onclick="addEmployee()"> Add
-					Employee</a> <a href="javascript:void(0);" onclick="updateEmployee()">
-					Update Employee</a> <a href="javascript:void(0);"
-					onclick="deleteEmployee()"> Delete Employee</a> <a
-					href="javascript:void(0);" onclick="searchEmployeeByID()">
-					Search Employee By ID</a> <a href="javascript:void(0);"
-					onclick="searchEmployeeByName()"> Search Employee By Name</a> <a
-					href="javascript:void(0);" onclick="searchEmployeeBySalary()">
-					Search Employee By Salary</a>
-			</div>
-
-			<h2>Author Services</h2>
-			<div class="nav-links">
-				<a href="javascript:void(0);" onclick="addAuthor()"> Add Author</a>
-				<a href="javascript:void(0);" onclick="updateAuthor()"> Update
-					Author</a> <a href="javascript:void(0);" onclick="deleteAuthor()">
-					Delete Author</a> <a href="javascript:void(0);"
-					onclick="searchAuthorByID()"> Search Author By ID</a> <a
-					href="javascript:void(0);" onclick="searchAuthorByName()">
-					Search Author By Name</a> <a href="javascript:void(0);"
-					onclick="searchAuthorBySkillsets()"> Search Author By Skillsets</a>
-				<a href="javascript:void(0);" onclick="searchAuthorByYear()">
-					Search Author By Year</a>
-			</div>
+<div class="container">
+    <div class="left-pane">
+        <h2>Student Services</h2>
+        <div class="nav-links">
+            <a href="javascript:void(0);" onclick="addStudent()"> Add Student</a>
+            <a href="javascript:void(0);" onclick="updateStudent()"> Update Student</a>
+            <a href="javascript:void(0);" onclick="deleteStudent()"> Delete Student</a>
+            <a href="javascript:void(0);" onclick="searchStudentByID()"> Search Student By ID</a>
+            <a href="javascript:void(0);" onclick="searchStudentByName()"> Search Student By Name</a>
+            <a href="javascript:void(0);" onclick="searchStudentByCourse()"> Search Student By Course</a>
+			<a href="javascript:void(0);" onclick="searchStudentByMarks()"> Search Student By Marks</a>
+        </div>
+        
+        <h2>Customer Services</h2>
+        <div class="nav-links">
+            <a href="javascript:void(0);" onclick="addCustomer()"> Add Customer</a>
+            <a href="javascript:void(0);" onclick="updateCustomer()"> Update Customer</a>
+            <a href="javascript:void(0);" onclick="deleteCustomer()"> Delete Customer</a>
+            <a href="javascript:void(0);" onclick="searchCustomerByID()"> Search Customer By ID</a>
+            <a href="javascript:void(0);" onclick="searchCustomerByName()"> Search Customer By Name</a>
+            <a href="javascript:void(0);" onclick="searchCustomerByAddress()"> Search Customer By Address</a>
+			<a href="javascript:void(0);" onclick="searchCustomerByPhoneNumber()"> Search Customer By Phone Number</a>
+        </div>
+        
+        <h2>Employee Services</h2>
+        <div class="nav-links">
+            <a href="javascript:void(0);" onclick="addEmployee()"> Add Employee</a>
+            <a href="javascript:void(0);" onclick="updateEmployee()"> Update Employee</a>
+            <a href="javascript:void(0);" onclick="deleteEmployee()"> Delete Employee</a>
+            <a href="javascript:void(0);" onclick="searchEmployeeByID()"> Search Employee By ID</a>
+            <a href="javascript:void(0);" onclick="searchEmployeeByName()"> Search Employee By Name</a>
+            <a href="javascript:void(0);" onclick="searchEmployeeBySalary()"> Search Employee By Salary</a>
+        </div>
+        
+         <h2>Author Services</h2>
+        <div class="nav-links">
+            <a href="javascript:void(0);" onclick="addAuthor()"> Add Author</a>
+            <a href="javascript:void(0);" onclick="updateAuthor()"> Update Author</a>
+            <a href="javascript:void(0);" onclick="deleteAuthor()"> Delete Author</a>
+            <a href="javascript:void(0);" onclick="searchAuthorByID()"> Search Author By ID</a>
+            <a href="javascript:void(0);" onclick="searchAuthorByName()"> Search Author By Name</a>
+			<a href="javascript:void(0);" onclick="searchAuthorBySkillsets()"> Search Author By Skillsets</a>
+            <a href="javascript:void(0);" onclick="searchAuthorByYear()"> Search Author By Year</a>
+        </div>
 			<h2>Software Services</h2>
 			<div class="nav-links">
 				<a href="javascript:void(0);" onclick="addSoftware()"> Add
@@ -96,19 +75,27 @@
 					onclick="searchSoftwareByPhoneNumber()"> Search Software By
 					Phone Number</a>
 			</div>
+			<h2>Task Services</h2>
+			<div class="nav-links">
+				<a href="javascript:void(0);" onclick="addTask()"> Add Task</a>
+				<a href="javascript:void(0);" onclick="updateTask()"> Update Task</a>
+				<a href="javascript:void(0);" onclick="deleteTask()"> Delete Task</a>
+				<a href="javascript:void(0);" onclick="searchTaskByID()">Search Task By ID</a> 
+				<a href="javascript:void(0);" onclick="searchTaskByPriority()"> Search Task By Priority</a>
+				<a href="javascript:void(0);" onclick="searchTaskByStatus()">Search Task By Status</a>
+				<a href="javascript:void(0);" onclick="searchTaskByCost()"> Search Task By Cost</a>
+			</div>
+			
 		</div>
-
 
 		<div class="right-pane">
 			<h2>Forms</h2>
 
-			<div id="search-student-by-id-section" class="form-container"
-				style="display: none;">
+			<div id="search-student-by-id-section" class="form-container" style="display: none;">
 				<h3>Search Student By Id</h3>
-				<form action="${pageContext.request.contextPath}/student/find/by/id"
-					method="get">
-					<label for="id">Enter Student Id:</label> <input type="text"
-						id="id" name="id" required /> <input type="submit" value="Search" />
+				<form action="${pageContext.request.contextPath}/student/find/by/id" method="get">
+					<label for="id">Enter Student Id:</label> <input type="text" id="id" name="id" required /> 
+					<input type="submit" value="Search" />
 				</form>
 			</div>
 
@@ -132,16 +119,12 @@
 				</div>
 			</c:if>
 
-
-			<div id="search-student-by-name-section" class="form-container"
-				style="display: none;">
+			<div id="search-student-by-name-section" class="form-container" style="display: none;">
 				<h3>Search Student By Name</h3>
 				<form
-					action="${pageContext.request.contextPath}/student/find/by/name"
-					method="get">
-					<label for="name">Enter Student Name:</label> <input type="text"
-						id="name" name="name" required /> <input type="submit"
-						value="Search" />
+					action="${pageContext.request.contextPath}/student/find/by/name" method="get">
+					<label for="name">Enter Student Name:</label> <input type="text" id="name" name="name" required /> 
+						<input type="submit" value="Search" />
 				</form>
 			</div>
 			<c:if test="${not empty studentsByName}">
@@ -167,21 +150,18 @@
 			</c:if>
 
 			<!-- Search by Course -->
-			<div id="search-student-by-course-section" class="form-container"
-				style="display: none;">
+			<div id="search-student-by-course-section" class="form-container" style="display: none;">
 				<h3>Search Student By Course</h3>
 				<form
-					action="${pageContext.request.contextPath}/student/find/by/course"
-					method="get">
-					<label for="course">Enter Course Name:</label> <input type="text"
-						id="course" name="course" required /> <input type="submit"
-						value="Search" />
+					action="${pageContext.request.contextPath}/student/find/by/course" method="get">
+					<label for="course">Enter Course Name:</label>
+					 <input type="text" id="course" name="course" required /> 
+					 <input type="submit" value="Search" />
 				</form>
 			</div>
 
 			<c:if test="${not empty studentsByCourse}">
-				<div id="search-student-by-course-result-section"
-					class="grid-section">
+				<div id="search-student-by-course-result-section" class="grid-section">
 					<h3>Matching Students (By Course)</h3>
 					<table border="1" cellpadding="10" cellspacing="0">
 						<tr>
@@ -203,21 +183,18 @@
 			</c:if>
 
 			<!-- Search by Marks -->
-			<div id="search-student-by-marks-section" class="form-container"
-				style="display: none;">
+			<div id="search-student-by-marks-section" class="form-container" style="display: none;">
 				<h3>Search Student By Marks</h3>
 				<form
-					action="${pageContext.request.contextPath}/student/find/by/marks"
-					method="get">
-					<label for="marks">Enter Marks:</label> <input type="number"
-						id="marks" name="marks" required /> <input type="submit"
-						value="Search" />
+					action="${pageContext.request.contextPath}/student/find/by/marks" method="get">
+					<label for="marks">Enter Marks:</label>
+					<input type="number" id="marks" name="marks" required />
+					<input type="submit" value="Search" />
 				</form>
 			</div>
 
 			<c:if test="${not empty studentsByMarks}">
-				<div id="search-student-by-marks-result-section"
-					class="grid-section">
+				<div id="search-student-by-marks-result-section" class="grid-section">
 					<h3>Matching Students (By Marks)</h3>
 					<table border="1" cellpadding="10" cellspacing="0">
 						<tr>
@@ -240,8 +217,7 @@
 
 			<div id="add-student-form-section" class="form-container">
 				<h3>Add Student</h3>
-				<form:form modelAttribute="studentForm" method="post"
-					action="${pageContext.request.contextPath}/student/save">
+				<form:form modelAttribute="studentForm" method="post" action="${pageContext.request.contextPath}/student/save">
 					<form:label path="id">ID:</form:label>
 					<form:input path="id" readonly="true" />
 					<br />
@@ -263,11 +239,9 @@
 			</div>
 
 
-			<div id="update-student-form-section" class="form-container"
-				style="display: none;">
+			<div id="update-student-form-section" class="form-container" style="display: none;">
 				<h3>Update Student</h3>
-				<form:form modelAttribute="studentForm" method="post"
-					action="${pageContext.request.contextPath}/student/update">
+				<form:form modelAttribute="studentForm" method="post" action="${pageContext.request.contextPath}/student/update">
 					<form:label path="id">ID:</form:label>
 					<form:input path="id" required="true" />
 					<br />
@@ -288,6 +262,7 @@
 				</form:form>
 			</div>
 
+			
 
 			<div id="delete-student-form-section" class="form-container"
 				style="display: none;">
@@ -299,6 +274,7 @@
 						type="submit" value="Delete" />
 				</form>
 			</div>
+
 
 			<c:if test="${not empty addedStudent}">
 				<div id="add-student-form-result-section" class="added-record">
@@ -322,8 +298,7 @@
 
 			<div id="add-customer-form-section" class="form-container">
 				<h3>Add Customer</h3>
-				<form:form modelAttribute="customerForm" method="post"
-					action="${pageContext.request.contextPath}/customer/save">
+			<form:form modelAttribute="customerForm" method="post" action="${pageContext.request.contextPath}/customer/save">
 					<form:label path="id">ID:</form:label>
 					<form:input path="id" readonly="true" />
 					<br />
@@ -361,14 +336,12 @@
 					</p>
 				</div>
 			</c:if>
-			<div id="search-customer-by-id-section" class="form-container"
-				style="display: none;">
+			<div id="search-customer-by-id-section" class="form-container" style="display: none;">
 				<h3>Search Customer By Id</h3>
-				<form
-					action="${pageContext.request.contextPath}/customer/find/by/id"
-					method="get">
-					<label for="id">Enter Customer Id:</label> <input type="text"
-						id="id" name="id" required /> <input type="submit" value="Search" />
+				<form action="${pageContext.request.contextPath}/customer/find/by/id" method="get">
+					<label for="id">Enter Customer Id:</label>
+					 <input type="text" id="id" name="id" required /> 
+					 <input type="submit" value="Search" />
 				</form>
 			</div>
 			<c:if test="${not empty foundCustomer}">
@@ -390,11 +363,9 @@
 					</table>
 				</div>
 			</c:if>
-			<div id="update-customer-form-section" class="form-container"
-				style="display: none;">
+			<div id="update-customer-form-section" class="form-container" style="display: none;">
 				<h3>Update Customer</h3>
-				<form:form modelAttribute="customerForm" method="post"
-					action="${pageContext.request.contextPath}/customer/update">
+				<form:form modelAttribute="customerForm" method="post" action="${pageContext.request.contextPath}/customer/update">
 					<form:label path="id">ID:</form:label>
 					<form:input path="id" required="true" />
 					<br />
@@ -414,30 +385,23 @@
 					<input type="submit" value="Update" />
 				</form:form>
 			</div>
-			<div id="delete-customer-form-section" class="form-container"
-				style="display: none;">
+			<div id="delete-customer-form-section" class="form-container" style="display: none;">
 				<h3>Delete Customer</h3>
-				<form action="${pageContext.request.contextPath}/customer/delete"
-					method="post">
-					<label for="deleteId">Enter Customer ID to Delete:</label> <input
-						type="text" id="deleteId" name="id" required /> <input
-						type="submit" value="Delete" />
+				<form action="${pageContext.request.contextPath}/customer/delete" method="post">
+					<label for="deleteId">Enter Customer ID to Delete:</label>
+					 <input type="text" id="deleteId" name="id" required /> 
+					 <input type="submit" value="Delete" />
 				</form>
 			</div>
-			<div id="search-customer-by-name-section" class="form-container"
-				style="display: none;">
+			<div id="search-customer-by-name-section" class="form-container" style="display: none;">
 				<h3>Search Customer By Name</h3>
-				<form
-					action="${pageContext.request.contextPath}/customer/find/by/name"
-					method="get">
-					<label for="name">Enter Customer Name:</label> <input type="text"
-						id="name" name="name" required /> <input type="submit"
-						value="Search" />
+				<form action="${pageContext.request.contextPath}/customer/find/by/name" method="get">
+					<label for="name">Enter Customer Name:</label> <input type="text" id="name" name="name" required /> 
+					<input type="submit" value="Search" />
 				</form>
 			</div>
 			<c:if test="${not empty customerByName}">
-				<div id="search-customer-by-name-result-section"
-					class="grid-section">
+				<div id="search-customer-by-name-result-section" class="grid-section">
 					<h3>Matching Customer</h3>
 					<table border="1" cellpadding="10" cellspacing="0">
 						<tr>
@@ -457,20 +421,15 @@
 					</table>
 				</div>
 			</c:if>
-			<div id="search-customer-by-address-section" class="form-container"
-				style="display: none;">
+			<div id="search-customer-by-address-section" class="form-container" style="display: none;">
 				<h3>Search Customer By Address</h3>
-				<form
-					action="${pageContext.request.contextPath}/customer/find/by/address"
-					method="get">
-					<label for="course">Enter Address Name:</label> <input type="text"
-						id="address" name="address" required /> <input type="submit"
-						value="Search" />
+				<form action="${pageContext.request.contextPath}/customer/find/by/address" method="get">
+					<label for="course">Enter Address Name:</label> <input type="text" id="address" name="address" required /> 
+					<input type="submit" value="Search" />
 				</form>
 			</div>
 			<c:if test="${not empty customerByAddress}">
-				<div id="search-customer-by-address-result-section"
-					class="grid-section">
+				<div id="search-customer-by-address-result-section" class="grid-section">
 					<h3>Matching Customer (By Address)</h3>
 					<table border="1" cellpadding="10" cellspacing="0">
 						<tr>
@@ -490,21 +449,17 @@
 					</table>
 				</div>
 			</c:if>
-			<div id="search-customer-by-phone-number-section"
-				class="form-container" style="display: none;">
+			<div id="search-customer-by-phone-number-section" class="form-container" style="display: none;">
 				<h3>Search Customer By Phone Number</h3>
-				<form
-					action="${pageContext.request.contextPath}/customer/find/by/phoneNumber"
-					method="get">
-					<label for="phoneNumber">Enter Phone Number:</label> <input
-						type="number" id="phoneNumber" name="phoneNumber" required /> <input
-						type="submit" value="Search" />
+				<form action="${pageContext.request.contextPath}/customer/find/by/phoneNumber" method="get">
+					<label for="phoneNumber">Enter Phone Number:</label> <input type="number" id="phoneNumber" 
+					name="phoneNumber" required />
+					 <input type="submit" value="Search" />
 				</form>
 			</div>
 
 			<c:if test="${not empty customerByPhoneNumber}">
-				<div id="search-customer-by-phone-number-result-section"
-					class="grid-section">
+				<div id="search-customer-by-phone-number-result-section" class="grid-section">
 					<h3>Matching Customer (By PhoneNumber)</h3>
 					<table border="1" cellpadding="10" cellspacing="0">
 						<tr>
@@ -524,172 +479,148 @@
 					</table>
 				</div>
 			</c:if>
-			<!-- Employee module starts -->
-			<div id="add-employee-form-section" class="form-container">
-				<h3>Add Employee</h3>
-				<form:form modelAttribute="employeeForm" method="post"
-					action="${pageContext.request.contextPath}/employee/save">
-					<form:label path="id">ID:</form:label>
-					<form:input path="id" readonly="true" />
-					<br />
-					<br />
-					<form:label path="name">Name:</form:label>
-					<form:input path="name" required="true" />
-					<br />
-					<br />
-					<form:label path="salary">Salary:</form:label>
-					<form:input path="salary" required="true" />
-					<br />
-					<br />
-					<input type="submit" value="Submit" />
-				</form:form>
+			
+			<!-- Customer module Ends -->
+			<!-- Employee module Starts --> 
+
+					<div id="add-employee-form-section" class="form-container">
+		    <h3>Add Employee</h3>
+		    <form:form modelAttribute="employeeForm" method="post" action="${pageContext.request.contextPath}/employee/save">
+		        <form:label path="id">ID:</form:label>
+		        <form:input path="id" readonly="true" />
+		        <br /><br />
+		        <form:label path="name">Name:</form:label>
+		        <form:input path="name" required="true" />
+		        <br /><br />
+		        <form:label path="salary">Salary:</form:label>
+		        <form:input path="salary" required="true" />
+		        <br /><br />
+		        <input type="submit" value="Submit" />
+		    </form:form>
 			</div>
+			
+		<div id="search-employee-by-id-section" class="form-container" style="display: none;">
+	            <h3>Search Employee By Id</h3>
+	            <form action="${pageContext.request.contextPath}/employee/find/by/id" method="get">
+	                <label for="id">Enter Employee Id:</label>
+	                <input type="text" id="id" name="id" required />
+	                <input type="submit" value="Search" />
+	            </form>
+	        </div>
+	        
+	         <div id="update-employee-form-section" class="form-container" style="display: none;">
+		    <h3>Update Employee</h3>
+		    <form:form modelAttribute="employeeForm" method="post" action="${pageContext.request.contextPath}/employee/update">
+		        <form:label path="id">ID:</form:label>
+		        <form:input path="id" required="true"/>
+		        <br /><br />
+		        <form:label path="name">Name:</form:label>
+		        <form:input path="name" required="true" />
+		        <br /><br />
+		        <form:label path="salary">Salary:</form:label>
+		        <form:input path="salary" required="true" />
+		        <br /><br />
+		        <input type="submit" value="Update" />
+		    </form:form>
+		</div>
+		
+		 <div id="delete-employee-form-section" class="form-container" style="display: none;">
+            <h3>Delete Employee</h3>
+            <form action="${pageContext.request.contextPath}/employee/delete" method="post">
+                <label for="deleteId">Enter Employee ID to Delete:</label>
+                <input type="text" id="deleteId" name="id" required />
+                <input type="submit" value="Delete" />
+            </form>
+        </div>
+        
+        <div id="search-employee-by-name-section" class="form-container" style="display: none;">
+		    <h3>Search Employee By Name</h3>
+		    <form action="${pageContext.request.contextPath}/employee/find/by/name" method="get">
+		        <label for="name">Enter Employee Name:</label>
+		        <input type="text" id="name" name="name" required />
+		        <input type="submit" value="Search" />
+		    </form>
+		</div>
+		<div id="search-employee-by-salary-section" class="form-container" style="display: none;">
+		    <h3>Search Employee By Salary</h3>
+		    <form action="${pageContext.request.contextPath}/employee/find/by/salary" method="get">
+		        <label for="salary">Enter Employee Salary:</label>
+		        <input type="text" id="salary" name="salary" required />
+		        <input type="submit" value="Search" />
+		    </form>
+		</div>
+		 <c:if test="${not empty addedEmployee}">
+		    <div id="add-employee-form-result-section" class="added-record">
+		        <h3>Employee Added Successfully!</h3>
+		        <p><strong>ID:</strong> ${addedEmployee.id}</p>
+		        <p><strong>Name:</strong> ${addedEmployee.name}</p>
+		        <p><strong>Salary:</strong> ${addedEmployee.salary}</p>
+		    </div>
+		</c:if>
+		
+		<c:if test="${not empty foundEmployee}">
+		    <div id="search-employee-by-id-result-section" class="grid-section" >
+		        <h3>Employee Found</h3>
+		        <table border="1" cellpadding="10" cellspacing="0">
+		            <tr>
+		                <th>ID</th>
+		                <th>Name</th>
+		                <th>Salary</th>
+		            </tr>
+		            <tr>
+		                <td>${foundEmployee.id}</td>
+		                <td>${foundEmployee.name}</td>
+		                <td>${foundEmployee.salary}</td>
+		            </tr>
+		        </table>
+		    </div>
+		</c:if>
+		
+		<c:if test="${not empty employeeByName}">
+		    <div id="search-employee-by-name-result-section" class="grid-section">
+		        <h3>Matching Employee (By Name)</h3>
+		        <table border="1" cellpadding="10" cellspacing="0">
+		            <tr>
+		                <th>ID</th>
+		                <th>Name</th>
+		                <th>Salary</th>
+		            </tr>
+		            <c:forEach var="employee" items="${employeeByName}">
+		                <tr>
+		                    <td>${employee.id}</td>
+		                    <td>${employee.name}</td>
+		                    <td>${employee.salary}</td>
+		               
+		            </tr>
+		            </c:forEach>
+		        </table>
+		    </div>
+		</c:if>
+		 <c:if test="${not empty employeeBySalary}">
+		    <div id="search-employee-by-salary-result-section" class="grid-section">
+		        <h3>Matching Employee (By Salary)</h3>
+		        <table border="1" cellpadding="10" cellspacing="0">
+		            <tr>
+		                <th>ID</th>
+		                <th>Name</th>
+		                <th>Salary</th>
+		            </tr>
+		            <c:forEach var="employee" items="${employeeBySalary}">
+		                <tr>
+		                    <td>${employee.id}</td>
+		                    <td>${employee.name}</td>
+		                    <td>${employee.salary}</td>
+		                </tr>
+		            </c:forEach>
+		        </table>
+		    </div>
+		</c:if> 
+		
+		<!-- Employee module ends --> 
+		
+		   <!-------------------- AUTHOR MODULE STARTS --------------->
 
-			<div id="search-employee-by-id-section" class="form-container"
-				style="display: none;">
-				<h3>Search Employee By Id</h3>
-				<form
-					action="${pageContext.request.contextPath}/employee/find/by/id"
-					method="get">
-					<label for="id">Enter Employee Id:</label> <input type="text"
-						id="id" name="id" required /> <input type="submit" value="Search" />
-				</form>
-			</div>
-
-			<div id="update-employee-form-section" class="form-container"
-				style="display: none;">
-				<h3>Update Employee</h3>
-				<form:form modelAttribute="employeeForm" method="post"
-					action="${pageContext.request.contextPath}/employee/update">
-					<form:label path="id">ID:</form:label>
-					<form:input path="id" required="true" />
-					<br />
-					<br />
-					<form:label path="name">Name:</form:label>
-					<form:input path="name" required="true" />
-					<br />
-					<br />
-					<form:label path="salary">Salary:</form:label>
-					<form:input path="salary" required="true" />
-					<br />
-					<br />
-					<input type="submit" value="Update" />
-				</form:form>
-			</div>
-
-			<div id="delete-employee-form-section" class="form-container"
-				style="display: none;">
-				<h3>Delete Employee</h3>
-				<form action="${pageContext.request.contextPath}/employee/delete"
-					method="post">
-					<label for="deleteId">Enter Employee ID to Delete:</label> <input
-						type="text" id="deleteId" name="id" required /> <input
-						type="submit" value="Delete" />
-				</form>
-			</div>
-
-			<div id="search-employee-by-name-section" class="form-container"
-				style="display: none;">
-				<h3>Search Employee By Name</h3>
-				<form
-					action="${pageContext.request.contextPath}/employee/find/by/name"
-					method="get">
-					<label for="name">Enter Employee Name:</label> <input type="text"
-						id="name" name="name" required /> <input type="submit"
-						value="Search" />
-				</form>
-			</div>
-			<div id="search-employee-by-salary-section" class="form-container"
-				style="display: none;">
-				<h3>Search Employee By Salary</h3>
-				<form
-					action="${pageContext.request.contextPath}/employee/find/by/salary"
-					method="get">
-					<label for="salary">Enter Employee Salary:</label> <input
-						type="text" id="salary" name="salary" required /> <input
-						type="submit" value="Search" />
-				</form>
-			</div>
-			<c:if test="${not empty addedEmployee}">
-				<div id="add-employee-form-result-section" class="added-record">
-					<h3>Employee Added Successfully!</h3>
-					<p>
-						<strong>ID:</strong> ${addedEmployee.id}
-					</p>
-					<p>
-						<strong>Name:</strong> ${addedEmployee.name}
-					</p>
-					<p>
-						<strong>Salary:</strong> ${addedEmployee.salary}
-					</p>
-				</div>
-			</c:if>
-
-			<c:if test="${not empty foundEmployee}">
-				<div id="search-employee-by-id-result-section" class="grid-section">
-					<h3>Employee Found</h3>
-					<table border="1" cellpadding="10" cellspacing="0">
-						<tr>
-							<th>ID</th>
-							<th>Name</th>
-							<th>Salary</th>
-						</tr>
-						<tr>
-							<td>${foundEmployee.id}</td>
-							<td>${foundEmployee.name}</td>
-							<td>${foundEmployee.salary}</td>
-						</tr>
-					</table>
-				</div>
-			</c:if>
-
-			<c:if test="${not empty employeeByName}">
-				<div id="search-employee-by-name-result-section"
-					class="grid-section">
-					<h3>Matching Employee (By Name)</h3>
-					<table border="1" cellpadding="10" cellspacing="0">
-						<tr>
-							<th>ID</th>
-							<th>Name</th>
-							<th>Salary</th>
-						</tr>
-						<c:forEach var="employee" items="${employeeByName}">
-							<tr>
-								<td>${employee.id}</td>
-								<td>${employee.name}</td>
-								<td>${employee.salary}</td>
-
-							</tr>
-						</c:forEach>
-					</table>
-				</div>
-			</c:if>
-			<c:if test="${not empty employeeBySalary}">
-				<div id="search-employee-by-salary-result-section"
-					class="grid-section">
-					<h3>Matching Employee (By Salary)</h3>
-					<table border="1" cellpadding="10" cellspacing="0">
-						<tr>
-							<th>ID</th>
-							<th>Name</th>
-							<th>Salary</th>
-						</tr>
-						<c:forEach var="employee" items="${employeeBySalary}">
-							<tr>
-								<td>${employee.id}</td>
-								<td>${employee.name}</td>
-								<td>${employee.salary}</td>
-							</tr>
-						</c:forEach>
-					</table>
-				</div>
-			</c:if>
-
-			<!-- Employee module ends -->
-
-			<!-------------------- AUTHOR MODULE STARTS --------------->
-
-			<div id="add-author-form-section" class="form-container">
+				<div id="add-author-form-section" class="form-container">
 				<h3>Add Author</h3>
 				<form:form modelAttribute="authorForm" method="post"
 					action="${pageContext.request.contextPath}/author/save">
@@ -1092,6 +1023,190 @@
 								<td>${software.name}</td>
 								<td>${software.address}</td>
 								<td>${software.phoneNumber}</td>
+							</tr>
+						</c:forEach>
+					</table>
+				</div>
+			</c:if>
+		   
+		    <!-- Software module ends -->
+          <!-- Task module starts -->
+
+			<div id="add-task-form-section" class="form-container">
+				<h3>Add Task</h3>
+				<form:form modelAttribute="taskForm" method="post" action="${pageContext.request.contextPath}/task/save">
+					<form:label path="id">ID:</form:label>
+					<form:input path="id" readonly="true" />
+					<br />
+					<br />
+					<form:label path="priority">Priority:</form:label>
+					<form:input path="priority" required="true" />
+					<br />
+					<br />
+					<form:label path="status">Status:</form:label>
+					<form:input path="status" required="true" />
+					<br />
+					<br />
+					<form:label path="cost">Cost:</form:label>
+					<form:input path="cost" type="number" required="true" />
+					<br />
+					<br />
+					<input type="submit" value="Submit" />
+				</form:form>
+			</div>
+
+			<c:if test="${not empty addedTask}">
+				<div id="add-task-form-result-section" class="added-record">
+					<h3>Task Added Successfully..!</h3>
+					<p>
+						<strong>ID:</strong> ${addedTask.id}
+					</p>
+					<p>
+						<strong>Priority:</strong> ${addedTask.priority}
+					</p>
+					<p>
+						<strong>Status:</strong> ${addedTask.status}
+					</p>
+					<p>
+						<strong>Cost:</strong> ${addedTask.cost}
+					</p>
+				</div>
+			</c:if>
+			<div id="search-task-by-id-section" class="form-container" style="display: none;">
+				<h3>Search Task By Id</h3>
+				<form action="${pageContext.request.contextPath}/task/find/by/id" method="get">
+					<label for="id">Enter Task Id:</label> <input type="text" id="id" name="id" required /> 
+					<input type="submit" value="Search" />
+				</form>
+			</div>
+			<c:if test="${not empty foundTask}">
+				<div id="search-task-by-id-result-section" class="grid-section">
+					<h3>Task Found..!</h3>
+					<table border="1" cellpadding="10" cellspacing="0">
+						<tr>
+							<th>ID</th>
+							<th>Priority</th>
+							<th>Status</th>
+							<th>Cost</th>
+						</tr>
+						<tr>
+							<td>${foundTask.id}</td>
+							<td>${foundTask.priority}</td>
+							<td>${foundTask.status}</td>
+							<td>${foundTask.cost}</td>
+						</tr>
+					</table>
+				</div>
+			</c:if>
+			<div id="update-task-form-section" class="form-container" style="display: none;">
+				<h3>Update Task</h3>
+				<form:form modelAttribute="taskForm" method="post" action="${pageContext.request.contextPath}/task/update">
+					<form:label path="id">ID:</form:label>
+					<form:input path="id" required="true" />
+					<br />
+					<br />
+					<form:label path="priority">Priority:</form:label>
+					<form:input path="priority" required="true" />
+					<br />
+					<br />
+					<form:label path="status">Status:</form:label>
+					<form:input path="status" required="true" />
+					<br />
+					<br />
+					<form:label path="cost">Cost:</form:label>
+					<form:input path="cost" type="number" required="true" />
+					<br />
+					<br />
+					<input type="submit" value="Update" />
+				</form:form>
+			</div>
+			<div id="delete-task-form-section" class="form-container" style="display: none;">
+				<h3>Delete Task</h3>
+				<form action="${pageContext.request.contextPath}/task/delete" method="post">
+					<label for="deleteId">Enter Task ID to Delete:</label> <input type="text" id="deleteId" name="id" required />
+					 <input type="submit" value="Delete" />
+				</form>
+			</div>
+			<div id="search-task-by-priority-section" class="form-container" style="display: none;">
+				<h3>Search Task By Priority</h3>
+				<form action="${pageContext.request.contextPath}/task/find/by/priority" method="get">
+					<label for="priority">Enter Priority :</label> <input type="text" id="priority" name="priority" required />
+					 <input type="submit" value="Search" />
+				</form>
+			</div>
+			<c:if test="${not empty taskByPriority}">
+				<div id="search-task-by-priority-result-section" class="grid-section">
+					<h3>Matching Task..!</h3>
+					<table border="1" cellpadding="10" cellspacing="0">
+						<tr>
+							<th>ID</th>
+							<th>Priority</th>
+							<th>Status</th>
+							<th>Cost</th>
+						</tr>
+						<c:forEach var="task" items="${taskByPriority}">
+							<tr>
+								<td>${task.id}</td>
+								<td>${task.priority}</td>
+								<td>${task.status}</td>
+								<td>${task.cost}</td>
+							</tr>
+						</c:forEach>
+					</table>
+				</div>
+			</c:if>
+			<div id="search-task-by-status-section" class="form-container" style="display: none;">
+				<h3>Search Task By Status</h3>
+				<form action="${pageContext.request.contextPath}/task/find/by/status" method="get">
+					<label for="status">Enter Status:</label>
+					 <input type="text" id="status" name="status" required />
+					  <input type="submit" value="Search" />
+				</form>
+			</div>
+			<c:if test="${not empty taskByStatus}">
+				<div id="search-task-by-status-result-section" class="grid-section">
+					<h3>Matching Task (By Status)</h3>
+					<table border="1" cellpadding="10" cellspacing="0">
+						<tr>
+							<th>ID</th>
+							<th>Priority</th>
+							<th>Status</th>
+							<th>Cost</th>
+						</tr>
+						<c:forEach var="task" items="${taskByStatus}">
+							<tr>
+								<td>${task.id}</td>
+								<td>${task.priority}</td>
+								<td>${task.status}</td>
+								<td>${task.cost}</td>
+							</tr>
+						</c:forEach>
+					</table>
+				</div>
+			</c:if>
+			<div id="search-task-by-cost-section" class="form-container" style="display: none;">
+				<h3>Search task By Cost</h3>
+				<form action="${pageContext.request.contextPath}/task/find/by/cost" method="get">
+					<label for="cost">Enter Cost:</label> <input type="number" id="cost" name="cost" required /> 
+					<input type="submit" value="Search" />
+				</form>
+			</div>
+			<c:if test="${not empty taskByCost}">
+				<div id="search-task-by-cost-result-section" class="grid-section">
+					<h3>Matching Task (By Cost)</h3>
+					<table border="1" cellpadding="10" cellspacing="0">
+						<tr>
+							<th>ID</th>
+							<th>Priority</th>
+							<th>Status</th>
+							<th>Cost</th>
+						</tr>
+						<c:forEach var="task" items="${taskByCost}">
+							<tr>
+								<td>${task.id}</td>
+								<td>${task.priority}</td>
+								<td>${task.status}</td>
+								<td>${task.cost}</td>
 							</tr>
 						</c:forEach>
 					</table>

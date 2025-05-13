@@ -57,8 +57,19 @@ function hideAllForms() {
 		"search-software-by-name-result-section",
 		"search-software-by-course-result-section",
 		"search-software-by-marks-result-section",
-		"add-software-form-result-section"
-
+		"add-software-form-result-section",
+		"add-task-form-section",
+		"update-task-form-section",
+		"delete-task-form-section",
+		"search-task-by-id-section",
+		"search-task-by-priority-section",
+		"search-task-by-status-section",
+		"search-task-by-cost-section",
+		"search-task-by-id-result-section",
+		"search-task-by-priority-result-section",
+		"search-task-by-status-result-section",
+		"search-task-by-cost-result-section",
+		"add-task-form-result-section"
 	];
 	sections.forEach(id => {
 		const el = document.getElementById(id);

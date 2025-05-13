@@ -9,6 +9,7 @@ import com.khadri.spring.customer.form.CustomerForm;
 import com.khadri.spring.employee.form.EmployeeForm;
 import com.khadri.spring.software.form.SoftwareForm;
 import com.khadri.spring.student.form.StudentForm;
+import com.khadri.spring.task.form.TaskForm;
 
 @Controller
 public class HomeController {
@@ -21,6 +22,8 @@ public class HomeController {
 		model.addAttribute("employeeForm", new EmployeeForm());
 		model.addAttribute("authorForm", new AuthorForm());
 		model.addAttribute("softwareForm", new SoftwareForm());
+		model.addAttribute("taskForm", new TaskForm());
+
 		return "khadri-services-portal"; // your JSP page name
 	}
 }
