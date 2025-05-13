@@ -8,6 +8,8 @@
     <module>student-backend-app</module>
     <module>customer-backend-app</module>
     <module>task-backend-app</module>
+    <module>employee-backend-app</module>
+    <module>author-backend-app</module>
     <module>khadri-services-portal</module>
   </modules>
   <properties>
