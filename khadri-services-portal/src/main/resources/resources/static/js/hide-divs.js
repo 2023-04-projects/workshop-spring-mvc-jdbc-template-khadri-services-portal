@@ -45,7 +45,19 @@ function hideAllForms() {
 		"search-author-by-name-result-section",
 		"search-author-by-skillsets-result-section",
 		"search-author-by-year-result-section",
-		"add-author-form-result-section"
+		"add-author-form-result-section",
+		"add-software-form-section",
+		"update-software-form-section",
+		"delete-software-form-section",
+		"search-software-by-id-section",
+		"search-software-by-name-section",
+		"search-software-by-course-section",
+		"search-software-by-marks-section",
+		"search-software-by-id-result-section",
+		"search-software-by-name-result-section",
+		"search-software-by-course-result-section",
+		"search-software-by-marks-result-section",
+		"add-software-form-result-section"
 
 	];
 	sections.forEach(id => {

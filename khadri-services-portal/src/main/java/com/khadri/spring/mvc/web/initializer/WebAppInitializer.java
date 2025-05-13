@@ -6,6 +6,7 @@ import com.khadri.spring.author.config.AuthorAppConfig;
 import com.khadri.spring.customer.config.CustomerAppConfig;
 import com.khadri.spring.employee.config.EmployeeAppConfig;
 import com.khadri.spring.mvc.config.AppConfig;
+import com.khadri.spring.software.config.SoftwareAppConfig;
 import com.khadri.spring.student.config.StudentAppConfig;
 
 public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
@@ -18,7 +19,7 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
 		return new Class[] { AppConfig.class, StudentAppConfig.class, CustomerAppConfig.class, EmployeeAppConfig.class,
-				AuthorAppConfig.class };
+				AuthorAppConfig.class ,SoftwareAppConfig.class};
 	}
 
 	@Override
