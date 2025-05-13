@@ -15,6 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.khadri.spring.author.form.AuthorForm;
 import com.khadri.spring.customer.form.CustomerForm;
 import com.khadri.spring.employee.form.EmployeeForm;
+import com.khadri.spring.software.form.SoftwareForm;
 import com.khadri.spring.student.form.StudentForm;
 import com.khadri.spring.task.form.TaskForm;
 import com.khadri.spring.task.service.TaskService;
@@ -45,6 +46,7 @@ public class TaskController {
 		model.addAttribute("studentForm", new StudentForm()); // reset form
 		model.addAttribute("employeeForm", new EmployeeForm()); // reset form
 		model.addAttribute("authorForm", new AuthorForm()); // reset form
+		model.addAttribute("softwareForm", new SoftwareForm()); // reset form
 		model.addAttribute("taskForm", new TaskForm()); // reset form
 		return "khadri-services-portal";
 	}
@@ -56,6 +58,7 @@ public class TaskController {
 		model.addAttribute("customerForm", new CustomerForm());
 		model.addAttribute("studentForm", new StudentForm()); // reset form
 		model.addAttribute("employeeForm", new EmployeeForm()); // reset form
+		model.addAttribute("softwareForm", new SoftwareForm()); // reset form
 		model.addAttribute("authorForm", new AuthorForm()); // reset form
 
 		return "khadri-services-portal";
@@ -70,6 +73,7 @@ public class TaskController {
 		model.addAttribute("customerForm", new CustomerForm());
 		model.addAttribute("studentForm", new StudentForm()); // reset form
 		model.addAttribute("employeeForm", new EmployeeForm()); // reset form
+		model.addAttribute("softwareForm", new SoftwareForm()); // reset form
 		model.addAttribute("authorForm", new AuthorForm()); // reset form
 
 		return "khadri-services-portal";
@@ -83,6 +87,7 @@ public class TaskController {
 		model.addAttribute("customerForm", new CustomerForm()); // Keep form model ready
 		model.addAttribute("studentForm", new StudentForm()); // reset form
 		model.addAttribute("employeeForm", new EmployeeForm()); // reset form
+		model.addAttribute("softwareForm", new SoftwareForm()); // reset form
 		model.addAttribute("authorForm", new AuthorForm()); // reset form
 
 		return "khadri-services-portal";
@@ -96,6 +101,7 @@ public class TaskController {
 		model.addAttribute("customerForm", new CustomerForm());
 		model.addAttribute("studentForm", new StudentForm()); // reset form
 		model.addAttribute("employeeForm", new EmployeeForm()); // reset form
+		model.addAttribute("softwareForm", new SoftwareForm()); // reset form
 		model.addAttribute("authorForm", new AuthorForm()); // reset form
 
 		return "khadri-services-portal";
@@ -109,6 +115,7 @@ public class TaskController {
 		model.addAttribute("customerForm", new CustomerForm());
 		model.addAttribute("studentForm", new StudentForm()); // reset form
 		model.addAttribute("employeeForm", new EmployeeForm()); // reset form
+		model.addAttribute("softwareForm", new SoftwareForm()); // reset form
 		model.addAttribute("authorForm", new AuthorForm()); // reset form
 
 		return "khadri-services-portal";

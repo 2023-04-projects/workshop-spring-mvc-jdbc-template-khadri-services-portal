@@ -28,3 +28,17 @@ CREATE TABLE author (
     skillsets VARCHAR(100) NOT NULL,
     year int NOT NULL
 );
+
+CREATE TABLE software (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    address VARCHAR(100) NOT NULL,
+    phoneNumber long NOT NULL
+);
+
+CREATE TABLE task (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    priority VARCHAR(20) NOT NULL,
+    status VARCHAR(20) NOT NULL,
+    cost DECIMAL(10, 2)
+);
